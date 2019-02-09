@@ -8,7 +8,8 @@
 #include "Halt.hpp"
 #include "Step.hpp"
 
-void bb2() {
+// see http://www.logique.jussieu.fr/~michel/ha.html#tm22
+void busy_beaver_2() {
   Val0 ZERO;
   Val1 ONE;
 
@@ -17,6 +18,10 @@ void bb2() {
 
   State a("A");
   State b("B");
+
+  // A0  A1  B0  B1
+  // 1RB 1LB 1LA 1RH
+  // Σ= 4, s=6
 
   Action a0(&ONE, &RIGHT, &b);
   Action a1(&ONE, &LEFT, &b);
@@ -38,7 +43,8 @@ void bb2() {
   a.go();
 }
 
-void bb4() {
+// http://www.logique.jussieu.fr/~michel/ha.html#tm42
+void busy_beaver_4() {
   Val0 ZERO;
   Val1 ONE;
 
@@ -50,8 +56,9 @@ void bb4() {
   State c("C");
   State d("D");
 
-  // A0  A1  B0  B1  C0  C1  D0  D1  sigma s
-  // 1RB 1LB 1LA 0LC 1RH 1LD 1RD 0RA 13    107
+  // A0  A1  B0  B1  C0  C1  D0  D1
+  // 1RB 1LB 1LA 0LC 1RH 1LD 1RD 0RA
+  // Σ=13, s=107
 
   Action a0(&ONE, &RIGHT, &b);
   Action a1(&ONE, &LEFT, &b);
@@ -82,8 +89,8 @@ void bb4() {
 }
 
 int main() {
-  bb2();
+  busy_beaver_2();
   std::cout << std::endl;
-  bb4();
+  busy_beaver_4();
   return 0;
 }
