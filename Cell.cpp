@@ -10,39 +10,34 @@ Cell::Cell(): id(++count), val(def) {
 }
 
 Cell* Cell::left() {
-  if (!_left) {
-    _left = new Cell();
-    _left->_right = this;
-  }
-  return _left;
+  return _get_or_create(true);
 }
 
 Cell* Cell::right() {
-  if (!_right) {
-    _right = new Cell();
-    _right->_left = this;
+  return _get_or_create(false);
+}
+
+Cell* Cell::_get_or_create(bool left) {
+  Cell* p = left ? _left : _right;
+  if (!p) {
+    p = new Cell();
+    (left ? p->_right : p->_left) = this;
+    (left ? _left : _right) = p;
   }
-  return _right;
+  return p;
+}
+
+void Cell::_delete(Cell* p, bool left) {
+  while (p) {
+    Cell* n = left ? p->_left : p->_right;
+    p->_left = p->_right = nullptr;
+    delete p;
+    p = n;
+  }
 }
 
 Cell::~Cell() {
   std::cout << "deleting cell " << id << std::endl;
-
-  Cell* p;
-
-  p = _left;
-  while (p) {
-    Cell* n = p->_left;
-    p->_left = p->_right = nullptr;
-    delete p;
-    p = n;
-  }
-
-  p = _right;
-  while (p) {
-    Cell* n = p->_right;
-    p->_left = p->_right = nullptr;
-    delete p;
-    p = n;
-  }
+  _delete(_left, true);
+  _delete(_right, false);
 }
