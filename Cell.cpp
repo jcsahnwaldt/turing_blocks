@@ -25,24 +25,16 @@ Cell* Cell::right() {
   return _right;
 }
 
+void Cell::_delete(bool left) {
+  Cell* next = left ? _left : _right;
+  _left = _right = nullptr;
+  delete this;
+  if (next) next->_delete(left);
+}
+
 Cell::~Cell() {
   std::cout << "deleting cell " << id << std::endl;
-
-  Cell* p;
-
-  p = _left;
-  while (p) {
-    Cell* n = p->_left;
-    p->_left = p->_right = nullptr;
-    delete p;
-    p = n;
-  }
-
-  p = _right;
-  while (p) {
-    Cell* n = p->_right;
-    p->_left = p->_right = nullptr;
-    delete p;
-    p = n;
-  }
+  if (_left) _left->_delete(true);
+  if (_right) _right->_delete(false);
+  _left = _right = nullptr;
 }
