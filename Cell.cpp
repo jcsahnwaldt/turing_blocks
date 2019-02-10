@@ -25,16 +25,20 @@ Cell* Cell::right() {
   return _right;
 }
 
-void Cell::_delete(bool left) {
+Cell* Cell::_delete(bool left) {
   Cell* next = left ? _left : _right;
   _left = _right = nullptr;
   delete this;
-  if (next) next->_delete(left);
+  return next;
+}
+
+void Cell::_delete() {
+  if (_left) _left = _left->_delete(true);
+  if (_right) _right = _right->_delete(false);
+  if (_left || _right) _delete();
 }
 
 Cell::~Cell() {
   std::cout << "deleting cell " << id << std::endl;
-  if (_left) _left->_delete(true);
-  if (_right) _right->_delete(false);
-  _left = _right = nullptr;
+  _delete();
 }
