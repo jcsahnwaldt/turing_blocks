@@ -14,7 +14,7 @@ private:
   static void _delete_all(Cell*, bool);
 public:
   static int count; // number of cells created
-  static Value* def; // default value for new cells
+  static Value* defaultValue; // default value for new cells
   Value* value; // current value
 
   Cell();

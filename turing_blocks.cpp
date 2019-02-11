@@ -35,7 +35,7 @@ void busy_beaver_2() {
 
   Cell::count = 0;
   Transition::count = 0;
-  Cell::def = &ZERO;
+  Cell::defaultValue = &ZERO;
 
   Cell s;
   a.cell = &s;
@@ -80,7 +80,7 @@ void busy_beaver_4() {
 
   Cell::count = 0;
   Transition::count = 0;
-  Cell::def = &ZERO;
+  Cell::defaultValue = &ZERO;
 
   Cell s;
   a.cell = &s;
@@ -105,7 +105,7 @@ void inf() {
 
   Cell::count = 0;
   Transition::count = 0;
-  Cell::def = &ZERO;
+  Cell::defaultValue = &ZERO;
 
   Cell s;
   a.cell = &s;
