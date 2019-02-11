@@ -12,3 +12,4 @@ Transition::~Transition() {
 }
 
 int Transition::count;
+int Transition::maxCount;

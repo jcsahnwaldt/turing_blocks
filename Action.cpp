@@ -12,6 +12,7 @@ Action::Action(const char* n, Value* v, Step* sp, State* st) : Transition::Trans
 
 void Action::go() {
   std::cout << "Transition " << ++count << ": "  << name << ": set " << value << ", move " << step << ", goto " << state << std::endl;
+  if (count == maxCount) return;
   cell->value = value;
   step->cell = cell;
   step->go();

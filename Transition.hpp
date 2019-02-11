@@ -7,6 +7,7 @@ struct Cell;
 
 struct Transition {
   static int count; // number of transitions so far
+  static int maxCount; // max number of transitions, <= 0 means unbounded
 
   const char* const name;
   Value* const value; // new value for current cell

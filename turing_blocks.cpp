@@ -21,7 +21,7 @@ void busy_beaver_2() {
 
   // A0  A1  B0  B1
   // 1RB 1LB 1LA 1RH
-  // Σ= 4, s=6
+  // Σ=4, s=6
 
   Action a0("A0", &ONE, &RIGHT, &b);
   Action a1("A1", &ONE, &LEFT, &b);
@@ -35,6 +35,7 @@ void busy_beaver_2() {
 
   Cell::count = 0;
   Transition::count = 0;
+  Transition::maxCount = 0;
   Cell::defaultValue = &ZERO;
 
   Cell s;
@@ -80,6 +81,7 @@ void busy_beaver_4() {
 
   Cell::count = 0;
   Transition::count = 0;
+  Transition::maxCount = 0;
   Cell::defaultValue = &ZERO;
 
   Cell s;
@@ -97,7 +99,7 @@ void inf() {
 
   State a("A");
 
-  Action a0("A0", &ONE, &RIGHT, &a);
+  Action a0("A0", &ONE, &LEFT, &a);
   Action a1("A1", &ONE, &LEFT, &a);
 
   a.trans0 = &a0;
@@ -105,6 +107,7 @@ void inf() {
 
   Cell::count = 0;
   Transition::count = 0;
+  Transition::maxCount = 1000000;
   Cell::defaultValue = &ZERO;
 
   Cell s;
