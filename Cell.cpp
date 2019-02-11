@@ -10,21 +10,19 @@ Cell::Cell(): id(++count), value(defaultValue) {
 }
 
 Cell* Cell::left() {
-  return _get_or_create(true);
+  if (!_left) {
+    _left = new Cell();
+    _left->_right = this;
+  }
+  return _left;
 }
 
 Cell* Cell::right() {
-  return _get_or_create(false);
-}
-
-Cell* Cell::_get_or_create(bool left) {
-  Cell* p = left ? _left : _right;
-  if (!p) {
-    p = new Cell();
-    (left ? p->_right : p->_left) = this;
-    (left ? _left : _right) = p;
+  if (!_right) {
+    _right = new Cell();
+    _right->_left = this;
   }
-  return p;
+  return _right;
 }
 
 void Cell::_delete_all(Cell* p, bool left) {
