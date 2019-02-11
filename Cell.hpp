@@ -2,16 +2,19 @@
 #define CELL_HPP
 
 #include <iostream>
+#include <memory>
 
 struct Value;
 
 struct Cell final {
 private:
-  const int id;
-  Cell* _left = nullptr;
-  Cell* _right = nullptr;
+  const int _id;
+  bool _root = false;
+  bool _left;
+  std::unique_ptr<Cell> _next;
+  Cell* _prev = nullptr;
   Cell* _get_or_create(bool);
-  static void _delete_all(Cell*, bool);
+  Cell(bool);
 public:
   static int count; // number of cells created
   static Value* defaultValue; // default value for new cells

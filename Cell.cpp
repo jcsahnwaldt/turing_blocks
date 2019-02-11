@@ -5,8 +5,14 @@
 int Cell::count;
 Value* Cell::defaultValue;
 
-Cell::Cell(): id(++count), value(defaultValue) {
-  std::cout << "Cell constructor: " << id << std::endl;
+Cell::Cell(): Cell(false) {
+  _root = true;
+  _prev = new Cell(true); // create first left cell
+  _prev->_prev = this; // _prev changes its meaning between root cell and first left cell
+}
+
+Cell::Cell(bool l): _id(++count), _left(l), value(defaultValue) {
+  std::cout << "Cell constructor: " << _id << std::endl;
 }
 
 Cell* Cell::left() {
@@ -18,26 +24,16 @@ Cell* Cell::right() {
 }
 
 Cell* Cell::_get_or_create(bool left) {
-  Cell* p = left ? _left : _right;
-  if (!p) {
-    p = new Cell();
-    (left ? p->_right : p->_left) = this;
-    (left ? _left : _right) = p;
+  if (left != _left) return _prev;
+  if (!_next) {
+    _next.reset(new Cell(left));
+    _next->_prev = this;
   }
-  return p;
-}
-
-void Cell::_delete_all(Cell* p, bool left) {
-  while (p) {
-    Cell* n = left ? p->_left : p->_right;
-    p->_left = p->_right = nullptr;
-    delete p;
-    p = n;
-  }
+  return _next.get();
 }
 
 Cell::~Cell() {
-  std::cout << "Cell destructor: " << id << std::endl;
-  _delete_all(_left, true);
-  _delete_all(_right, false);
+  std::cout << "Cell destructor: " << _id << std::endl;
+  if (_root) delete _prev;
+  while (_next) _next = std::move(_next->_next);
 }
