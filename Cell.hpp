@@ -11,7 +11,7 @@ private:
   Cell* _left = nullptr;
   Cell* _right = nullptr;
   Cell* _get_or_create(bool);
-  static void _delete(Cell*, bool);
+  static void _delete_all(Cell*, bool);
 public:
   static int count; // number of cells created
   static Value* def; // default value for new cells

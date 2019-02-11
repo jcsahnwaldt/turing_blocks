@@ -27,7 +27,7 @@ Cell* Cell::_get_or_create(bool left) {
   return p;
 }
 
-void Cell::_delete(Cell* p, bool left) {
+void Cell::_delete_all(Cell* p, bool left) {
   while (p) {
     Cell* n = left ? p->_left : p->_right;
     p->_left = p->_right = nullptr;
@@ -38,6 +38,6 @@ void Cell::_delete(Cell* p, bool left) {
 
 Cell::~Cell() {
   std::cout << "Cell destructor: " << id << std::endl;
-  _delete(_left, true);
-  _delete(_right, false);
+  _delete_all(_left, true);
+  _delete_all(_right, false);
 }
