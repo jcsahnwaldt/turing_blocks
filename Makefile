@@ -1,4 +1,3 @@
-# CXX=clang++
 CXX=g++-8
 CXXFLAGS=-O3 -std=c++2a -Wall -Wextra -Wpedantic
 
