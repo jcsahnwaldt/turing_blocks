@@ -25,17 +25,15 @@ Cell* Cell::right() {
   return _right;
 }
 
-void Cell::_delete_all(Cell* p, bool left) {
-  while (p) {
-    Cell* n = left ? p->_left : p->_right;
-    p->_left = p->_right = nullptr;
-    delete p;
-    p = n;
-  }
+void Cell::_delete(bool left) {
+  Cell* next = left ? _left : _right;
+  _left = _right = nullptr;
+  delete this;
+  if (next) next->_delete(left);
 }
 
 Cell::~Cell() {
   std::cout << "Cell destructor: " << id << std::endl;
-  _delete_all(_left, true);
-  _delete_all(_right, false);
+  if (_left) _left->_delete(true);
+  if (_right) _right->_delete(false);
 }

@@ -10,7 +10,7 @@ private:
   const int id;
   Cell* _left = nullptr;
   Cell* _right = nullptr;
-  static void _delete_all(Cell*, bool);
+  void _delete(bool);
 public:
   static int count; // number of cells created
   static Value* defaultValue; // default value for new cells
