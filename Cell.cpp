@@ -3,9 +3,9 @@
 #include "Cell.hpp"
 
 int Cell::count;
-Val* Cell::def;
+Value* Cell::def;
 
-Cell::Cell(): id(++count), val(def) {
+Cell::Cell(): id(++count), value(def) {
   std::cout << "Cell constructor: " << id << std::endl;
 }
 

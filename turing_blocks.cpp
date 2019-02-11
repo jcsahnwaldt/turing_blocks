@@ -2,7 +2,7 @@
 
 #include "State.hpp"
 #include "Cell.hpp"
-#include "Val.hpp"
+#include "Value.hpp"
 #include "Transition.hpp"
 #include "Action.hpp"
 #include "Halt.hpp"
@@ -10,8 +10,8 @@
 
 // see http://www.logique.jussieu.fr/~michel/ha.html#tm22
 void busy_beaver_2() {
-  Val0 ZERO;
-  Val1 ONE;
+  Value0 ZERO;
+  Value1 ONE;
 
   StepLeft LEFT;
   StepRight RIGHT;
@@ -45,8 +45,8 @@ void busy_beaver_2() {
 
 // http://www.logique.jussieu.fr/~michel/ha.html#tm42
 void busy_beaver_4() {
-  Val0 ZERO;
-  Val1 ONE;
+  Value0 ZERO;
+  Value1 ONE;
 
   StepLeft LEFT;
   StepRight RIGHT;
@@ -89,8 +89,8 @@ void busy_beaver_4() {
 }
 
 void inf() {
-  Val0 ZERO;
-  Val1 ONE;
+  Value0 ZERO;
+  Value1 ONE;
 
   StepLeft LEFT;
   StepRight RIGHT;

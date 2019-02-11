@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-struct Val;
+struct Value;
 
 struct Cell final {
 private:
@@ -14,8 +14,8 @@ private:
   static void _delete(Cell*, bool);
 public:
   static int count; // number of cells created
-  static Val* def; // default value for new cells
-  Val* val; // current value
+  static Value* def; // default value for new cells
+  Value* value; // current value
 
   Cell();
   Cell* left();

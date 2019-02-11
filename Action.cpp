@@ -3,16 +3,16 @@
 
 #include <iostream>
 
-#include "Val.hpp"
+#include "Value.hpp"
 #include "Step.hpp"
 #include "State.hpp"
 #include "Cell.hpp"
 
-Action::Action(const char* n, Val* v, Step* sp, State* st) : Transition::Transition(n, v, sp), state(st) {}
+Action::Action(const char* n, Value* v, Step* sp, State* st) : Transition::Transition(n, v, sp), state(st) {}
 
 void Action::go() {
-  std::cout << "Transition " << ++count << ": "  << name << ": set " << val << ", move " << step << ", goto " << state << std::endl;
-  cell->val = val;
+  std::cout << "Transition " << ++count << ": "  << name << ": set " << value << ", move " << step << ", goto " << state << std::endl;
+  cell->value = value;
   step->cell = cell;
   step->go();
   state->cell = step->cell;

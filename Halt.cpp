@@ -3,15 +3,15 @@
 
 #include <iostream>
 
-#include "Val.hpp"
+#include "Value.hpp"
 #include "Step.hpp"
 #include "Cell.hpp"
 
-Halt::Halt(const char* n, Val* v, Step* sp) : Transition::Transition(n, v, sp) {}
+Halt::Halt(const char* n, Value* v, Step* sp) : Transition::Transition(n, v, sp) {}
 
 void Halt::go() {
-  std::cout << "Transition " << ++count << ": "  << name << ": set " << val << ", move " << step << ", halt" << std::endl;
-  cell->val = val;
+  std::cout << "Transition " << ++count << ": "  << name << ": set " << value << ", move " << step << ", halt" << std::endl;
+  cell->value = value;
   step->cell = cell;
   step->go();
   // halt

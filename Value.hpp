@@ -1,26 +1,26 @@
-#ifndef VAL_HPP
-#define VAL_HPP
+#ifndef VALUE_HPP
+#define VALUE_HPP
 
 #include <iostream>
 
 struct State;
 
-struct Val {
+struct Value {
   State* state;
   virtual void go() = 0;
   virtual void print(std::ostream& os) const = 0;
 };
 
-struct Val0 final : Val {
+struct Value0 final : Value {
   void go();
   void print(std::ostream& os) const;
 };
 
-struct Val1 final : Val {
+struct Value1 final : Value {
   void go();
   void print(std::ostream& os) const;
 };
 
-std::ostream& operator<<(std::ostream& os, const Val* val);
+std::ostream& operator<<(std::ostream& os, const Value* value);
 
 #endif

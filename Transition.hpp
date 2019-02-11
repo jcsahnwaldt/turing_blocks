@@ -1,7 +1,7 @@
 #ifndef TRANSITION_HPP
 #define TRANSITION_HPP
 
-struct Val;
+struct Value;
 struct Step;
 struct Cell;
 
@@ -9,10 +9,10 @@ struct Transition {
   static int count; // number of transitions so far
 
   const char* const name;
-  Val* const val; // new value for current cell
+  Value* const value; // new value for current cell
   Step* const step; // gets next cell
 
-  Transition(const char* name, Val* val, Step* step);
+  Transition(const char* name, Value* value, Step* step);
   virtual ~Transition();
 
   Cell* cell = nullptr; // current cell

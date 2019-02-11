@@ -4,7 +4,7 @@
 #include "Transition.hpp"
 
 struct Halt final : Transition {
-  Halt(const char* n, Val* val, Step* step);
+  Halt(const char* n, Value* value, Step* step);
   void go();
 };
 
