@@ -1,20 +1,14 @@
 #ifndef ACTION_HPP
 #define ACTION_HPP
 
-#include "Trans.hpp"
+#include "Transition.hpp"
 
-struct Step;
 struct State;
-struct Val;
 
-struct Action final : Trans {
-  Val* const val; // new value for current cell
-  Step* const step; // gets next cell
+struct Action final : Transition {
   State* const state; // next state
-
-  Action(Val* v, Step* sp, State* st);
+  Action(const char* n, Val* val, Step* step, State* state);
   void go();
-  ~Action();
 };
 
 #endif

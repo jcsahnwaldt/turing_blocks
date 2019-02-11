@@ -6,7 +6,7 @@ int Cell::count;
 Val* Cell::def;
 
 Cell::Cell(): id(++count), val(def) {
-  std::cout << "creating cell " << id << std::endl;
+  std::cout << "Cell constructor: " << id << std::endl;
 }
 
 Cell* Cell::left() {
@@ -37,7 +37,7 @@ void Cell::_delete(Cell* p, bool left) {
 }
 
 Cell::~Cell() {
-  std::cout << "deleting cell " << id << std::endl;
+  std::cout << "Cell destructor: " << id << std::endl;
   _delete(_left, true);
   _delete(_right, false);
 }
