@@ -1,13 +1,13 @@
-#ifndef ACTION_HPP
-#define ACTION_HPP
+#ifndef GOTO_HPP
+#define GOTO_HPP
 
-#include "Transition.hpp"
+#include "Action.hpp"
 
 struct State;
 
-struct Action final : Transition {
+struct Goto final : Action {
   State* const state; // next state
-  Action(const char* n, Value* value, Step* step, State* state);
+  Goto(const char* n, Value* value, Step* step, State* state);
   void go();
 };
 

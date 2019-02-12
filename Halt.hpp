@@ -1,9 +1,9 @@
 #ifndef HALT_HPP
 #define HALT_HPP
 
-#include "Transition.hpp"
+#include "Action.hpp"
 
-struct Halt final : Transition {
+struct Halt final : Action {
   Halt(const char* n, Value* value, Step* step);
   void go();
 };

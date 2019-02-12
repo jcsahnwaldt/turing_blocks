@@ -1,15 +1,15 @@
 
-#include "Transition.hpp"
+#include "Action.hpp"
 
 #include <iostream>
 
-Transition::Transition(const char* n, Value* v, Step* s) : name(n), value(v), step(s) {
-  std::cout << "Transition constructor: " << name << std::endl;
+Action::Action(const char* n, Value* v, Step* s) : name(n), value(v), step(s) {
+  std::cout << "Action constructor: " << name << std::endl;
 }
 
-Transition::~Transition() {
-  std::cout << "Transition destructor: " << name << std::endl;
+Action::~Action() {
+  std::cout << "Action destructor: " << name << std::endl;
 }
 
-int Transition::count;
-int Transition::maxCount;
+int Action::count;
+int Action::maxCount;

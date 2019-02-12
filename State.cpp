@@ -2,7 +2,7 @@
 
 #include "State.hpp"
 #include "Cell.hpp"
-#include "Transition.hpp"
+#include "Action.hpp"
 #include "Value.hpp"
 
 State::State(const char* n) : name(n) {
@@ -16,8 +16,8 @@ State::~State() {
 void State::go() {
   cell->value->state = this;
   cell->value->go();
-  trans->cell = cell;
-  trans->go();
+  action->cell = cell;
+  action->go();
 }
 
 std::ostream& operator<<(std::ostream& os, const State* state) {

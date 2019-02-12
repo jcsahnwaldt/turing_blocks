@@ -4,18 +4,18 @@
 #include <iostream>
 
 struct Cell;
-struct Transition;
+struct Action;
 
 struct State final {
   const char* const name;
 
-  Transition* trans0;
-  Transition* trans1;
+  Action* action0;
+  Action* action1;
 
   State(const char* name);
   ~State();
 
-  Transition* trans = nullptr; // current transition
+  Action* action = nullptr; // current action
   Cell* cell = nullptr; // current cell
 
   void go();
