@@ -9,8 +9,14 @@
 
 Halt::Halt(const char* n, Value* v, Step* sp) : Transition::Transition(n, v, sp) {}
 
+__attribute__((noinline)) // if this is inline, clang doesn't optimize tail-calls :-(
+static void print(Halt* p) {
+  std::cout << "Transition " << Transition::count << ": "  << p->name << ": set " << p->value << ", move " << p->step << ", halt" << std::endl;
+}
+
 void Halt::go() {
-  std::cout << "Transition " << ++count << ": "  << name << ": set " << value << ", move " << step << ", halt" << std::endl;
+  ++count;
+  print(this);
   cell->value = value;
   step->cell = cell;
   step->go();

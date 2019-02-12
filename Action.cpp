@@ -10,8 +10,14 @@
 
 Action::Action(const char* n, Value* v, Step* sp, State* st) : Transition::Transition(n, v, sp), state(st) {}
 
+__attribute__((noinline)) // if this is inline, clang doesn't optimize tail-calls :-(
+static void print(Action* p) {
+  std::cout << "Transition " << Transition::count << ": "  << p->name << ": set " << p->value << ", move " << p->step << ", goto " << p->state << std::endl;
+}
+
 void Action::go() {
-  std::cout << "Transition " << ++count << ": "  << name << ": set " << value << ", move " << step << ", goto " << state << std::endl;
+  ++count;
+  print(this);
   if (count == maxCount) return;
   cell->value = value;
   step->cell = cell;
