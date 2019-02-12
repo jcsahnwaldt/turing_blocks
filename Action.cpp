@@ -1,27 +1,15 @@
 
-#include "Action.hpp"
+#include "Transition.hpp"
 
 #include <iostream>
 
-#include "Value.hpp"
-#include "Step.hpp"
-#include "State.hpp"
-#include "Cell.hpp"
-
-Action::Action(const char* n, Value* v, Step* sp, State* st) : Transition::Transition(n, v, sp), state(st) {}
-
-__attribute__((noinline)) // if this is inline, clang doesn't optimize tail-calls :-(
-static void print(Action* p) {
-  std::cout << "Transition " << Transition::count << ": "  << p->name << ": set " << p->value << ", move " << p->step << ", goto " << p->state << std::endl;
+Transition::Transition(const char* n, Value* v, Step* s) : name(n), value(v), step(s) {
+  std::cout << "Transition constructor: " << name << std::endl;
 }
 
-void Action::go() {
-  ++count;
-  print(this);
-  if (count == maxCount) return;
-  cell->value = value;
-  step->cell = cell;
-  step->go();
-  state->cell = step->cell;
-  state->go();
+Transition::~Transition() {
+  std::cout << "Transition destructor: " << name << std::endl;
 }
+
+int Transition::count;
+int Transition::maxCount;
