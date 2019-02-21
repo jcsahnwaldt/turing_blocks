@@ -1,25 +1,22 @@
 #ifndef CELL_HPP
 #define CELL_HPP
 
-#include <iostream>
-
 struct Value;
+struct Cells;
 
 struct Cell final {
 private:
-  const int id;
+  const long id;
+  Cells& cells;
   Cell* _left = nullptr;
   Cell* _right = nullptr;
-  void _delete(bool);
+  Cell(long id, Cells& cells);
+  ~Cell();
+  friend class std::allocator<Cell>;
 public:
-  static int count; // number of cells created
-  static Value* defaultValue; // default value for new cells
   Value* value; // current value
-
-  Cell();
   Cell* left();
   Cell* right();
-  ~Cell();
 };
 
 #endif

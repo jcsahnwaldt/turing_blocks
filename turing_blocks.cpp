@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "State.hpp"
+#include "Cells.hpp"
 #include "Cell.hpp"
 #include "Value.hpp"
 #include "Action.hpp"
@@ -33,13 +34,11 @@ void busy_beaver_2() {
   b.action0 = &b0;
   b.action1 = &b1;
 
-  Cell::count = 0;
   Action::count = 0;
   Action::maxCount = 0;
-  Cell::defaultValue = &ZERO;
 
-  Cell s;
-  a.cell = &s;
+  Cells cells(ZERO);
+  a.cell = &cells.root;
 
   a.go();
 }
@@ -79,13 +78,11 @@ void busy_beaver_4() {
   d.action0 = &d0;
   d.action1 = &d1;
 
-  Cell::count = 0;
   Action::count = 0;
   Action::maxCount = 0;
-  Cell::defaultValue = &ZERO;
 
-  Cell s;
-  a.cell = &s;
+  Cells cells(ZERO);
+  a.cell = &cells.root;
 
   a.go();
 }
@@ -105,13 +102,11 @@ void inf() {
   a.action0 = &a0;
   a.action1 = &a1;
 
-  Cell::count = 0;
   Action::count = 0;
   Action::maxCount = 1000000;
-  Cell::defaultValue = &ZERO;
 
-  Cell s;
-  a.cell = &s;
+  Cells cells(ZERO);
+  a.cell = &cells.root;
 
   a.go();
 }
