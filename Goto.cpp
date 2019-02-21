@@ -8,15 +8,14 @@
 #include "Cell.hpp"
 #include "State.hpp"
 
-Goto::Goto(const char* n, Value* v, Step* sp, State* st, long& c, long m) :
-  Action::Action(n, v, sp, c), max(m), state(st) {}
+Goto::Goto(const char* n, State* cs, State* ns, Value* v, Step* s, long& c, long m) :
+  Action::Action(n, cs, ns, v, s, c), max(m) {}
 
 void Goto::print() {
   Action::print();
-  std::cout << "goto " << state << std::endl;
+  std::cout << "goto " << next << std::endl;
 }
 
 void Goto::go_1() {
-  state->cell = cell;
-  if (max < 0 || count < max) state->go();
+  if (max < 0 || count < max) next->go();
 }

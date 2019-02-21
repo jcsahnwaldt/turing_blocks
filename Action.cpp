@@ -3,19 +3,20 @@
 
 #include "Value.hpp"
 #include "Step.hpp"
+#include "State.hpp"
 #include "Cell.hpp"
 
-Action::Action(const char* n, Value* v, Step* s, long& c) :
-  name(n), value(v), step(s), count(c) {}
+Action::Action(const char* n, State* cs, State* ns, Value* v, Step* s, long& c) :
+  name(n), value(v), step(s), count(c), current(cs), next(ns) {}
 
 void Action::print() {
-  std::cout << "Action " << count << ": "  << name << ": set " << cell << " from " << cell->value << " to " << value << ", move " << step << ", ";
+  std::cout << "Action " << count << ": "  << name << ": set " << current->cell << " from " << current->cell->value << " to " << value << ", move " << step << ", ";
 }
 
 void Action::go_0() {
   ++count;
   print();
-  cell->value = value;
+  current->cell->value = value;
   step->action = this;
   step->go();
 }

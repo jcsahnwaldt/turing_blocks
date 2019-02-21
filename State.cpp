@@ -12,7 +12,6 @@ State::State(const char* n) :
 void State::go() {
   cell->value->state = this;
   cell->value->go();
-  action->cell = cell;
   action->go_0();
 }
 

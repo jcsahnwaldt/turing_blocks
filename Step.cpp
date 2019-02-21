@@ -2,10 +2,11 @@
 #include "Step.hpp"
 
 #include "Action.hpp"
+#include "State.hpp"
 #include "Cell.hpp"
 
 void StepLeft::go() {
-  action->cell = action->cell->left();
+  action->next->cell = action->current->cell->left();
   action->go_1();
 }
 
@@ -14,7 +15,7 @@ void StepLeft::print(std::ostream& os) const {
 }
 
 void StepRight::go() {
-  action->cell = action->cell->right();
+  action->next->cell = action->current->cell->right();
   action->go_1();
 }
 
@@ -23,6 +24,7 @@ void StepRight::print(std::ostream& os) const {
 }
 
 void StepNone::go() {
+  action->next->cell = action->current->cell;
   action->go_1();
 }
 
