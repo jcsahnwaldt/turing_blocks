@@ -16,6 +16,15 @@ void Goto::print() {
   std::cout << "goto " << next << std::endl;
 }
 
+void Goto::do_cell() {
+  current->cell->value = value;
+  step->action = this;
+  step->do_move();
+}
+
 void Goto::do_next() {
-  if (max < 0 || count < max) next->go();
+  ++count;
+  print();
+  if (max >= 0 && count >= max) return;
+  next->go();
 }

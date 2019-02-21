@@ -28,7 +28,7 @@ void busy_beaver_2() {
   Goto a0("A0", &a, &b, &ONE, &RIGHT, counter);
   Goto a1("A1", &a, &b, &ONE, &LEFT, counter);
   Goto b0("B0", &b, &a, &ONE, &LEFT, counter);
-  Halt b1("B1", &b, &b, &ONE, &RIGHT, counter);
+  Halt b1("B1", &b, &ONE, &RIGHT, counter);
 
   a.action0 = &a0;
   a.action1 = &a1;
@@ -65,7 +65,7 @@ void busy_beaver_4() {
   Goto a1("A1", &a, &b, &ONE, &LEFT, counter);
   Goto b0("B0", &b, &a, &ONE, &LEFT, counter);
   Goto b1("B1", &b, &c, &ZERO, &LEFT, counter);
-  Halt c0("C0", &c, &c, &ONE, &RIGHT, counter);
+  Halt c0("C0", &c, &ONE, &RIGHT, counter);
   Goto c1("C1", &c, &d, &ONE, &LEFT, counter);
   Goto d0("D0", &d, &d, &ONE, &RIGHT, counter);
   Goto d1("D1", &d, &a, &ZERO, &RIGHT, counter);
@@ -99,7 +99,7 @@ void inf() {
   long counter = 0;
   const long max = 1000000;
   Goto a0("A0", &a, &a, &ONE, &RIGHT, counter, max);
-  Halt a1("A1", &a, &a, &ONE, &LEFT, counter); // never reached
+  Halt a1("A1", &a, &ONE, &LEFT, counter); // never reached
 
   a.action0 = &a0;
   a.action1 = &a1;

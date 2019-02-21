@@ -12,11 +12,3 @@ Action::Action(const char* n, State* cs, State* ns, Value* v, Step* s, long& c) 
 void Action::print() {
   std::cout << "Action " << count << ": "  << name << ": set " << current->cell << " from " << current->cell->value << " to " << value << ", move " << step << ", ";
 }
-
-void Action::do_cell() {
-  ++count;
-  print();
-  current->cell->value = value;
-  step->action = this;
-  step->do_move();
-}
