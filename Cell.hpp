@@ -2,6 +2,7 @@
 #define CELL_HPP
 
 // TODO: find a better way to detect which class needs to be our friend?
+// friend std::deque<Cell>::allocator_type doesn't work.
 #ifdef __clang__
   // works for clang 7.0.1 and Apple clang version 9.1.0
   #define DEQUE_ALLOCATOR std::allocator
