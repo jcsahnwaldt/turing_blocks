@@ -13,7 +13,6 @@ struct State final {
   Action* action1;
 
   State(const char* name);
-  ~State();
 
   Action* action = nullptr; // current action
   Cell* cell = nullptr; // current cell

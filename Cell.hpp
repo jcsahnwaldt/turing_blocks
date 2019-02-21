@@ -1,6 +1,8 @@
 #ifndef CELL_HPP
 #define CELL_HPP
 
+#include <memory>
+
 struct Value;
 struct Cells;
 
@@ -11,8 +13,7 @@ private:
   Cell* _left = nullptr;
   Cell* _right = nullptr;
   Cell(long id, Cells& cells);
-  ~Cell();
-  friend class std::allocator<Cell>;
+  friend class std::allocator<Cell>; // for deque.emplace_*()
 public:
   Value* value; // current value
   Cell* left();

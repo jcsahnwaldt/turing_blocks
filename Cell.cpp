@@ -1,11 +1,8 @@
 
-#include <iostream>
-
 #include "Cell.hpp"
 #include "Cells.hpp"
 
 Cell::Cell(long i, Cells& c): id(i), cells(c), value(&c.defaultValue) {
-  std::cout << "Cell constructor: " << id << std::endl;
 }
 
 Cell* Cell::left() {
@@ -22,8 +19,4 @@ Cell* Cell::right() {
     _right->_left = this;
   }
   return _right;
-}
-
-Cell::~Cell() {
-  std::cout << "Cell destructor: " << id << std::endl;
 }

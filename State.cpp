@@ -1,3 +1,4 @@
+
 #include <iostream>
 
 #include "State.hpp"
@@ -6,11 +7,6 @@
 #include "Value.hpp"
 
 State::State(const char* n) : name(n) {
-  std::cout << "State constructor: " << name << std::endl;
-}
-
-State::~State() {
-  std::cout << "State destructor: " << name << std::endl;
 }
 
 void State::go() {

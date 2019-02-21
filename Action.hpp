@@ -14,7 +14,6 @@ struct Action {
   Step* const step; // gets next cell
 
   Action(const char* name, Value* value, Step* step);
-  virtual ~Action();
 
   Cell* cell = nullptr; // current cell
   virtual void go() = 0;
