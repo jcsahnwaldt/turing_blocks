@@ -11,7 +11,7 @@ protected:
   Value* const value; // new value for current cell
   Step* const step; // gets next cell
   long& count; // number of actions so far
-  virtual void print() = 0;
+  virtual void print();
 public:
   Action(const char* name, Value* value, Step* step, long& count);
   Cell* cell = nullptr; // current cell
