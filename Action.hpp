@@ -16,8 +16,8 @@ public:
   Action(const char* name, State* current, State* next, Value* value, Step* step, long& count);
   State* const current; // current state
   State* const next; // next state
-  virtual void go_0();
-  virtual void go_1() = 0;
+  virtual void do_cell();
+  virtual void do_next() = 0;
 };
 
 #endif

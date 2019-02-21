@@ -8,7 +8,7 @@ protected:
   void print() override;
 public:
   Halt(const char* n, State* current, State* next, Value* value, Step* step, long& count);
-  void go_1() override;
+  void do_next() override;
 };
 
 #endif

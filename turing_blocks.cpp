@@ -38,7 +38,7 @@ void busy_beaver_2() {
   Cells cells(ZERO);
   a.cell = &cells.init;
 
-  a.go_0();
+  a.go();
 
   std::cout << cells.count() << " cells" << std::endl;
 }
@@ -82,7 +82,7 @@ void busy_beaver_4() {
   Cells cells(ZERO);
   a.cell = &cells.init;
 
-  a.go_0();
+  a.go();
 
   std::cout << cells.count() << " cells" << std::endl;
 }
@@ -107,7 +107,7 @@ void inf() {
   Cells cells(ZERO);
   a.cell = &cells.init;
 
-  a.go_0();
+  a.go();
 
   std::cout << cells.count() << " cells" << std::endl;
 }

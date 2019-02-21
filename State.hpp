@@ -16,10 +16,8 @@ public:
   Action* action0; // TODO: should be Action* const
   Action* action1; // TODO: should be Action* const
 
-  Action* action = nullptr; // current action
   Cell* cell = nullptr; // current cell
-  void go_0();
-  void go_1();
+  void go();
 };
 
 std::ostream& operator<<(std::ostream&, const State*);

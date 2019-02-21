@@ -16,6 +16,6 @@ void Goto::print() {
   std::cout << "goto " << next << std::endl;
 }
 
-void Goto::go_1() {
-  if (max < 0 || count < max) next->go_0();
+void Goto::do_next() {
+  if (max < 0 || count < max) next->go();
 }

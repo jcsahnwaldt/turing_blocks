@@ -9,13 +9,9 @@
 State::State(const char* n) :
   name(n) {}
 
-void State::go_0() {
+void State::go() {
   cell->value->state = this;
-  cell->value->go();
-}
-
-void State::go_1() {
-  action->go_0();
+  cell->value->do_action();
 }
 
 std::ostream& operator<<(std::ostream& os, const State* state) {

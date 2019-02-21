@@ -2,19 +2,18 @@
 #include "Value.hpp"
 
 #include "State.hpp"
+#include "Action.hpp"
 
-void Value0::go() {
-  state->action = state->action0;
-  state->go_1();
+void Value0::do_action() {
+  state->action0->do_cell();
 }
 
 void Value0::print(std::ostream& os) const {
   os << "ZERO";
 }
 
-void Value1::go() {
-  state->action = state->action1;
-  state->go_1();
+void Value1::do_action() {
+  state->action1->do_cell();
 }
 
 void Value1::print(std::ostream& os) const {

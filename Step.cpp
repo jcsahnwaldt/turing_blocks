@@ -5,27 +5,27 @@
 #include "State.hpp"
 #include "Cell.hpp"
 
-void StepLeft::go() {
+void StepLeft::do_move() {
   action->next->cell = action->current->cell->left();
-  action->go_1();
+  action->do_next();
 }
 
 void StepLeft::print(std::ostream& os) const {
   os << "LEFT";
 }
 
-void StepRight::go() {
+void StepRight::do_move() {
   action->next->cell = action->current->cell->right();
-  action->go_1();
+  action->do_next();
 }
 
 void StepRight::print(std::ostream& os) const {
   os << "RIGHT";
 }
 
-void StepNone::go() {
+void StepNone::do_move() {
   action->next->cell = action->current->cell;
-  action->go_1();
+  action->do_next();
 }
 
 void StepNone::print(std::ostream& os) const {

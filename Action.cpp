@@ -13,10 +13,10 @@ void Action::print() {
   std::cout << "Action " << count << ": "  << name << ": set " << current->cell << " from " << current->cell->value << " to " << value << ", move " << step << ", ";
 }
 
-void Action::go_0() {
+void Action::do_cell() {
   ++count;
   print();
   current->cell->value = value;
   step->action = this;
-  step->go();
+  step->do_move();
 }

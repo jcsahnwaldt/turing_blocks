@@ -15,6 +15,6 @@ void Halt::print() {
   std::cout << "halt" << std::endl;
 }
 
-void Halt::go_1() {
+void Halt::do_next() {
   // halt
 }

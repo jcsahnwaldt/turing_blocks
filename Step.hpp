@@ -7,22 +7,22 @@ class Action;
 
 struct Step {
   Action* action;
-  virtual void go() = 0;
+  virtual void do_move() = 0;
   virtual void print(std::ostream&) const = 0;
 };
 
 struct StepLeft final : Step {
-  void go() override;
+  void do_move() override;
   void print(std::ostream&) const override;
 };
 
 struct StepRight final : Step {
-  void go() override;
+  void do_move() override;
   void print(std::ostream&) const override;
 };
 
 struct StepNone final : Step {
-  void go() override;
+  void do_move() override;
   void print(std::ostream&) const override;
 };
 
