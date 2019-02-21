@@ -1,5 +1,5 @@
-*.o
 turing_blocks
+*.o
 *.gch
 *.dSYM
 .vscode/
