@@ -7,11 +7,11 @@
 
 struct Value;
 
-struct Cells final {
+class Cells final {
 private:
   std::deque<Cell> cells;
   Value& value; // default value for new cells
-  friend struct Cell;
+  friend class Cell;
 public:
   Cells(Value& value);
   Cell& init;

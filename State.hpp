@@ -3,23 +3,24 @@
 
 #include <iostream>
 
-struct Cell;
-struct Action;
+class Cell;
+class Action;
 
-struct State final {
+class State final {
+private:
   const char* const name;
-
-  Action* action0;
-  Action* action1;
-
+  friend std::ostream& operator<<(std::ostream&, const State*);
+public:
   State(const char* name);
+
+  Action* action0; // TODO: should be Action* const
+  Action* action1; // TODO: should be Action* const
 
   Action* action = nullptr; // current action
   Cell* cell = nullptr; // current cell
-
   void go();
 };
 
-std::ostream& operator<<(std::ostream& os, const State* state);
+std::ostream& operator<<(std::ostream&, const State*);
 
 #endif

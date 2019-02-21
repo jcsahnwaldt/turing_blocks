@@ -3,15 +3,15 @@
 
 #include "Action.hpp"
 
-struct State;
+class State;
 
-struct Goto final : Action {
+class Goto final : public Action {
 protected:
-  void print();
+  void print() override;
 public:
   State* const state; // next state
   Goto(const char* n, Value* value, Step* step, State* state, long& count, long max = 0);
-  void go();
+  void go() override;
 };
 
 #endif

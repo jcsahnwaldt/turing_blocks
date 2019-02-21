@@ -3,12 +3,12 @@
 
 #include "Action.hpp"
 
-struct Halt final : Action {
+class Halt final : public Action {
 protected:
-  void print();
+  void print() override;
 public:
   Halt(const char* n, Value* value, Step* step, long& count, long max = 0);
-  void go();
+  void go() override;
 };
 
 #endif

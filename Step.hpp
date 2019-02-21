@@ -3,24 +3,24 @@
 
 #include <iostream>
 
-struct Cell;
+class Cell;
 
 struct Step {
   Cell* cell;
   virtual void go() = 0;
-  virtual void print(std::ostream& os) const = 0;
+  virtual void print(std::ostream&) const = 0;
 };
 
 struct StepLeft final : Step {
-  void go();
-  void print(std::ostream& os) const;
+  void go() override;
+  void print(std::ostream&) const override;
 };
 
 struct StepRight final : Step {
-  void go();
-  void print(std::ostream& os) const;
+  void go() override;
+  void print(std::ostream&) const override;
 };
 
-std::ostream& operator<<(std::ostream& os, const Step* step);
+std::ostream& operator<<(std::ostream&, const Step*);
 
 #endif

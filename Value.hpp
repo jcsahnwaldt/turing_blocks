@@ -3,24 +3,24 @@
 
 #include <iostream>
 
-struct State;
+class State;
 
 struct Value {
   State* state;
   virtual void go() = 0;
-  virtual void print(std::ostream& os) const = 0;
+  virtual void print(std::ostream&) const = 0;
 };
 
 struct Value0 final : Value {
-  void go();
-  void print(std::ostream& os) const;
+  void go() override;
+  void print(std::ostream&) const override;
 };
 
 struct Value1 final : Value {
-  void go();
-  void print(std::ostream& os) const;
+  void go() override;
+  void print(std::ostream&) const override;
 };
 
-std::ostream& operator<<(std::ostream& os, const Value* value);
+std::ostream& operator<<(std::ostream&, const Value*);
 
 #endif

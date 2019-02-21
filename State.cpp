@@ -6,8 +6,8 @@
 #include "Action.hpp"
 #include "Value.hpp"
 
-State::State(const char* n) : name(n) {
-}
+State::State(const char* n) :
+  name(n) {}
 
 void State::go() {
   cell->value->state = this;
