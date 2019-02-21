@@ -21,6 +21,11 @@ struct StepRight final : Step {
   void print(std::ostream&) const override;
 };
 
+struct StepNone final : Step {
+  void go() override;
+  void print(std::ostream&) const override;
+};
+
 std::ostream& operator<<(std::ostream&, const Step*);
 
 #endif
