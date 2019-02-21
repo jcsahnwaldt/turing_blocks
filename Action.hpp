@@ -13,9 +13,7 @@ protected:
   long& count; // number of actions so far
   virtual void print();
 public:
-  template<class States>
-  Action(const char* name, const States& states, int current, int next, Value* value, Step* step, long& count) :
-    name(name), value(value), step(step), count(count), current(states[current]), next(states[next]) {}
+  Action(const char* name, State& current, State& next, Value& value, Step& step, long& count);
   State* const current; // current state
   State* const next; // next state
   virtual void do_cell() = 0;

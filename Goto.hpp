@@ -11,9 +11,7 @@ private:
 protected:
   void print() override;
 public:
-  template<class States>
-  Goto(const char* name, const States& states, int current, int next, Value* value, Step* step, long& count, long max = -1) :
-    Action(name, states, current, next, value, step, count), max(max) {}
+  Goto(const char* name, State& current, State& next, Value& value, Step& step, long& count, long max = -1);
   void do_cell() override;
   void do_next() override;
 };

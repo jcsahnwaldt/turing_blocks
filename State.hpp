@@ -11,14 +11,9 @@ private:
   const char* const name;
   friend std::ostream& operator<<(std::ostream&, const State*);
 public:
-  template<class States>
-  State(const char* name, States& states, int id) :
-    name(name) {
-    states[id] = this;
-  }
-
-  Action* action0; // TODO: should be Action* const
-  Action* action1; // TODO: should be Action* const
+  State(const char* name, Action& action0, Action& action1);
+  Action* const action0;
+  Action* const action1;
 
   Cell* cell = nullptr; // current cell
   void go();
