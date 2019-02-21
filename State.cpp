@@ -9,9 +9,12 @@
 State::State(const char* n) :
   name(n) {}
 
-void State::go() {
+void State::go_0() {
   cell->value->state = this;
   cell->value->go();
+}
+
+void State::go_1() {
   action->go_0();
 }
 

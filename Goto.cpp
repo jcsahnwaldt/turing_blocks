@@ -17,5 +17,5 @@ void Goto::print() {
 }
 
 void Goto::go_1() {
-  if (max < 0 || count < max) next->go();
+  if (max < 0 || count < max) next->go_0();
 }

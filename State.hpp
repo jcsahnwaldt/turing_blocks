@@ -18,7 +18,8 @@ public:
 
   Action* action = nullptr; // current action
   Cell* cell = nullptr; // current cell
-  void go();
+  void go_0();
+  void go_1();
 };
 
 std::ostream& operator<<(std::ostream&, const State*);
