@@ -36,9 +36,11 @@ void busy_beaver_2() {
   b.action1 = &b1;
 
   Cells cells(ZERO);
-  a.cell = &cells.root;
+  a.cell = &cells.init;
 
   a.go();
+
+  std::cout << cells.count() << " cells" << std::endl;
 }
 
 // http://www.logique.jussieu.fr/~michel/ha.html#tm42
@@ -78,9 +80,11 @@ void busy_beaver_4() {
   d.action1 = &d1;
 
   Cells cells(ZERO);
-  a.cell = &cells.root;
+  a.cell = &cells.init;
 
   a.go();
+
+  std::cout << cells.count() << " cells" << std::endl;
 }
 
 void inf() {
@@ -101,9 +105,11 @@ void inf() {
   a.action1 = &a1;
 
   Cells cells(ZERO);
-  a.cell = &cells.root;
+  a.cell = &cells.init;
 
   a.go();
+
+  std::cout << cells.count() << " cells" << std::endl;
 }
 
 int main() {

@@ -3,7 +3,7 @@
 #include "Cells.hpp"
 
 Cell::Cell(long i, Cells& c) :
-  id(i), cells(c), value(&c.defaultValue) {}
+  id(i), cells(c), value(&c.value) {}
 
 Cell* Cell::left() {
   if (!_left) {

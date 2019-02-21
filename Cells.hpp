@@ -10,11 +10,12 @@ struct Value;
 struct Cells final {
 private:
   std::deque<Cell> cells;
-  Value& defaultValue; // default value for new cells
+  Value& value; // default value for new cells
   friend struct Cell;
 public:
-  Cells(Value& defaultValue);
-  Cell& root;
+  Cells(Value& value);
+  Cell& init;
+  long count();
 };
 
 #endif
