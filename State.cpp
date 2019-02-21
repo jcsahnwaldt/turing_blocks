@@ -13,7 +13,7 @@ void State::go() {
   cell->value->state = this;
   cell->value->go();
   action->cell = cell;
-  action->go();
+  action->go_0();
 }
 
 std::ostream& operator<<(std::ostream& os, const State* state) {

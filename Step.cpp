@@ -1,16 +1,34 @@
 
 #include "Step.hpp"
 
+#include "Action.hpp"
 #include "Cell.hpp"
 
-void StepLeft::go() { cell = cell->left(); }
-void StepLeft::print(std::ostream& os) const { os << "LEFT"; }
+void StepLeft::go() {
+  action->cell = action->cell->left();
+  action->go_1();
+}
 
-void StepRight::go() { cell = cell->right(); }
-void StepRight::print(std::ostream& os) const { os << "RIGHT"; }
+void StepLeft::print(std::ostream& os) const {
+  os << "LEFT";
+}
 
-void StepNone::go() {}
-void StepNone::print(std::ostream& os) const { os << "NONE"; }
+void StepRight::go() {
+  action->cell = action->cell->right();
+  action->go_1();
+}
+
+void StepRight::print(std::ostream& os) const {
+  os << "RIGHT";
+}
+
+void StepNone::go() {
+  action->go_1();
+}
+
+void StepNone::print(std::ostream& os) const {
+  os << "NONE";
+}
 
 std::ostream& operator<<(std::ostream& os, const Step* step) {
   step->print(os);
