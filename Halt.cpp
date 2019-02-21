@@ -8,9 +8,6 @@
 #include "Cell.hpp"
 #include "State.hpp"
 
-Halt::Halt(const char* n, State* t, Value* v, Step* s, long& c) :
-  Action::Action(n, t, t, v, s, c) {}
-
 void Halt::print() {
   Action::print();
   std::cout << "halt" << std::endl;

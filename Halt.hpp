@@ -7,7 +7,9 @@ class Halt final : public Action {
 protected:
   void print() override;
 public:
-  Halt(const char* n, State* state, Value* value, Step* step, long& count);
+  template<class States>
+  Halt(const char* name, States states, int state, Value* value, Step* step, long& count) :
+    Action::Action(name, states, state, state, value, step, count) {}
   void do_cell() override;
   void do_next() override;
 };
