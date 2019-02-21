@@ -14,14 +14,14 @@ void Goto::print() {
 }
 
 void Goto::do_cell() {
+  ++count;
+  print();
   current->cell->value = value;
   step->action = this;
   step->do_move();
 }
 
 void Goto::do_next() {
-  ++count;
-  print();
   if (max >= 0 && count >= max) return;
   next->go();
 }

@@ -14,13 +14,13 @@ void Halt::print() {
 }
 
 void Halt::do_cell() {
+  ++count;
+  print();
   current->cell->value = value;
   step->action = this;
   step->do_move();
 }
 
 void Halt::do_next() {
-  ++count;
-  print();
   // halt
 }
