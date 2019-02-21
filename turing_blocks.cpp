@@ -24,18 +24,16 @@ void busy_beaver_2() {
   // 1RB 1LB 1LA 1RH
   // Σ=4, s=6
 
-  Goto a0("A0", &ONE, &RIGHT, &b);
-  Goto a1("A1", &ONE, &LEFT, &b);
-  Goto b0("B0", &ONE, &LEFT, &a);
-  Halt b1("B1", &ONE, &RIGHT);
+  long counter = 0;
+  Goto a0("A0", &ONE, &RIGHT, &b, counter);
+  Goto a1("A1", &ONE, &LEFT, &b, counter);
+  Goto b0("B0", &ONE, &LEFT, &a, counter);
+  Halt b1("B1", &ONE, &RIGHT, counter);
 
   a.action0 = &a0;
   a.action1 = &a1;
   b.action0 = &b0;
   b.action1 = &b1;
-
-  Action::count = 0;
-  Action::maxCount = 0;
 
   Cells cells(ZERO);
   a.cell = &cells.root;
@@ -60,14 +58,15 @@ void busy_beaver_4() {
   // 1RB 1LB 1LA 0LC 1RH 1LD 1RD 0RA
   // Σ=13, s=107
 
-  Goto a0("A0", &ONE, &RIGHT, &b);
-  Goto a1("A1", &ONE, &LEFT, &b);
-  Goto b0("B0", &ONE, &LEFT, &a);
-  Goto b1("B1", &ZERO, &LEFT, &c);
-  Halt c0("C0", &ONE, &RIGHT);
-  Goto c1("C1", &ONE, &LEFT, &d);
-  Goto d0("D0", &ONE, &RIGHT, &d);
-  Goto d1("D1", &ZERO, &RIGHT, &a);
+  long counter = 0;
+  Goto a0("A0", &ONE, &RIGHT, &b, counter);
+  Goto a1("A1", &ONE, &LEFT, &b, counter);
+  Goto b0("B0", &ONE, &LEFT, &a, counter);
+  Goto b1("B1", &ZERO, &LEFT, &c, counter);
+  Halt c0("C0", &ONE, &RIGHT, counter);
+  Goto c1("C1", &ONE, &LEFT, &d, counter);
+  Goto d0("D0", &ONE, &RIGHT, &d, counter);
+  Goto d1("D1", &ZERO, &RIGHT, &a, counter);
 
   a.action0 = &a0;
   a.action1 = &a1;
@@ -77,9 +76,6 @@ void busy_beaver_4() {
   c.action1 = &c1;
   d.action0 = &d0;
   d.action1 = &d1;
-
-  Action::count = 0;
-  Action::maxCount = 0;
 
   Cells cells(ZERO);
   a.cell = &cells.root;
@@ -96,14 +92,13 @@ void inf() {
 
   State a("A");
 
-  Goto a0("A0", &ONE, &LEFT, &a);
-  Goto a1("A1", &ONE, &LEFT, &a);
+  long counter = 0;
+  const long max = 1000000;
+  Goto a0("A0", &ONE, &LEFT, &a, counter, max);
+  Goto a1("A1", &ONE, &LEFT, &a, counter, max);
 
   a.action0 = &a0;
   a.action1 = &a1;
-
-  Action::count = 0;
-  Action::maxCount = 1000000;
 
   Cells cells(ZERO);
   a.cell = &cells.root;

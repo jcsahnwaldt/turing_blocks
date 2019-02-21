@@ -2,6 +2,7 @@
 #define CELL_HPP
 
 #include <memory>
+#include <iostream>
 
 struct Value;
 struct Cells;
@@ -14,10 +15,13 @@ private:
   Cell* _right = nullptr;
   Cell(long id, Cells& cells);
   friend class std::allocator<Cell>; // for deque.emplace_*()
+  friend std::ostream& operator<<(std::ostream& os, const Cell* cell);
 public:
   Value* value; // current value
   Cell* left();
   Cell* right();
 };
+
+std::ostream& operator<<(std::ostream& os, const Cell* cell);
 
 #endif

@@ -2,8 +2,8 @@
 #include "Cell.hpp"
 #include "Cells.hpp"
 
-Cell::Cell(long i, Cells& c): id(i), cells(c), value(&c.defaultValue) {
-}
+Cell::Cell(long i, Cells& c) :
+  id(i), cells(c), value(&c.defaultValue) {}
 
 Cell* Cell::left() {
   if (!_left) {
@@ -19,4 +19,9 @@ Cell* Cell::right() {
     _right->_left = this;
   }
   return _right;
+}
+
+std::ostream& operator<<(std::ostream& os, const Cell* cell) {
+  os << "cell " << cell->id;
+  return os;
 }

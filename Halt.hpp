@@ -4,7 +4,10 @@
 #include "Action.hpp"
 
 struct Halt final : Action {
-  Halt(const char* n, Value* value, Step* step);
+protected:
+  void print();
+public:
+  Halt(const char* n, Value* value, Step* step, long& count, long max = 0);
   void go();
 };
 

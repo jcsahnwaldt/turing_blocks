@@ -8,17 +8,18 @@
 #include "State.hpp"
 #include "Cell.hpp"
 
-Goto::Goto(const char* n, Value* v, Step* sp, State* st) : Action::Action(n, v, sp), state(st) {}
+Goto::Goto(const char* n, Value* v, Step* sp, State* st, long& c, long m) :
+  Action::Action(n, v, sp, c, m), state(st) {}
 
 __attribute__((noinline)) // if this is inline, clang doesn't optimize tail-calls :-(
-static void print(Goto* p) {
-  std::cout << "Action " << Action::count << ": "  << p->name << ": set " << p->value << ", move " << p->step << ", goto " << p->state << std::endl;
+void Goto::print() {
+  std::cout << "Action " << count << ": "  << name << ": set " << cell << " to " << value << ", move " << step << ", goto " << state << std::endl;
 }
 
 void Goto::go() {
   ++count;
-  print(this);
-  if (count == maxCount) return;
+  print();
+  if (count == max) return;
   cell->value = value;
   step->cell = cell;
   step->go();
