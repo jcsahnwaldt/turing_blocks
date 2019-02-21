@@ -1,2 +1,3 @@
 *.o
 turing_blocks
+.vscode/
