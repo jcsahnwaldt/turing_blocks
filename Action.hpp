@@ -14,7 +14,7 @@ protected:
   virtual void print();
 public:
   template<class States>
-  Action(const char* name, States states, int current, int next, Value* value, Step* step, long& count) :
+  Action(const char* name, const States& states, int current, int next, Value* value, Step* step, long& count) :
     name(name), value(value), step(step), count(count), current(states[current]), next(states[next]) {}
   State* const current; // current state
   State* const next; // next state

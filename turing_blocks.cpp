@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "States.hpp"
 #include "State.hpp"
 #include "Cells.hpp"
 #include "Cell.hpp"
@@ -17,7 +18,7 @@ void busy_beaver_2() {
   StepLeft LEFT;
   StepRight RIGHT;
 
-  State* ss[2]{};
+  States ss(2);
 
   State a("A", ss, 0);
   State b("B", ss, 1);
@@ -53,7 +54,7 @@ void busy_beaver_4() {
   StepLeft LEFT;
   StepRight RIGHT;
 
-  State* ss[4]{};
+  States ss(4);
 
   State a("A", ss, 0);
   State b("B", ss, 1);
@@ -98,7 +99,7 @@ void inf() {
   StepLeft LEFT;
   StepRight RIGHT;
 
-  State* ss[1]{};
+  States ss(1);
 
   State a("A", ss, 0);
 

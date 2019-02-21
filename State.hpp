@@ -12,7 +12,7 @@ private:
   friend std::ostream& operator<<(std::ostream&, const State*);
 public:
   template<class States>
-  State(const char* name, States states, int id) :
+  State(const char* name, States& states, int id) :
     name(name) {
     states[id] = this;
   }

@@ -12,7 +12,7 @@ protected:
   void print() override;
 public:
   template<class States>
-  Goto(const char* name, States states, int current, int next, Value* value, Step* step, long& count, long max = -1) :
+  Goto(const char* name, const States& states, int current, int next, Value* value, Step* step, long& count, long max = -1) :
     Action(name, states, current, next, value, step, count), max(max) {}
   void do_cell() override;
   void do_next() override;
