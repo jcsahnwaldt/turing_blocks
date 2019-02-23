@@ -11,12 +11,13 @@ class Action {
     this.counter = counter; // final
   }
 
-  doCell() {
+  doCell(call = true) {
     this.counter.count++;
     console.log(this.toString());
     this.current.cell.value = this.value;
     this.step.action = this;
-    this.step.doMove();
+    if (call) this.step.doMove();
+    else return [this.step, 'doMove'];
   }
 
   toString() {
@@ -39,9 +40,10 @@ class Goto extends Action {
     return super.toString() + "goto " + this.next;
   }
 
-  doNext() {
+  doNext(call = true) {
     if (this.max >= 0 && this.counter.count >= this.max) return;
-    this.next.go();
+    if (call) this.next.go();
+    else return [this.next, 'go'];
   }
 }
 

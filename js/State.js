@@ -14,9 +14,10 @@ class State {
     // TODO: make final
   }
 
-  go() {
+  go(call = true) {
     this.cell.value.state = this;
-    this.cell.value.doAction();
+    if (call) this.cell.value.doAction();
+    else return [this.cell.value, 'doAction'];
   }
 
   toString() {

@@ -6,8 +6,9 @@ class Value0 {
     Object.seal(this);
   }
 
-  doAction() {
-    this.state.action0.doCell();
+  doAction(call = true) {
+    if (call) this.state.action0.doCell();
+    else return [this.state.action0, 'doCell'];
   }
 
   toString() {
@@ -22,8 +23,9 @@ class Value1 {
     Object.seal(this);
   }
 
-  doAction() {
-    this.state.action1.doCell();
+  doAction(call = true) {
+    if (call) this.state.action1.doCell();
+    else return [this.state.action1, 'doCell'];
   }
 
   toString() {

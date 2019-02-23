@@ -37,6 +37,7 @@ function busy_beaver_2() {
   a.go();
 
   console.log(Cell.count + " cells");
+  console.log();
 }
 
 // http://www.logique.jussieu.fr/~michel/ha.html#tm42
@@ -78,6 +79,7 @@ function busy_beaver_4() {
   a.go();
 
   console.log(Cell.count + " cells");
+  console.log();
 }
 
 function inf() {
@@ -90,28 +92,39 @@ function inf() {
   const a = new State("A");
 
   const counter = {count: 0};
-  const max = 1000000;
+  const max = 100000;
   const a0 = new Goto("A0", a, a, ONE, RIGHT, counter, max);
   const a1 = new Halt("A1", a, ONE, LEFT, counter); // never reached
 
   a.init(a0, a1);
 
-  Cell.count = 0;
   Cell.defaultValue = ZERO;
-  a.cell = new Cell();
 
+  counter.count = 0;
+  Cell.count = 0;
+  a.cell = new Cell();
+  let call = [a, 'go'];
+  while (call) {
+    const target = call[0];
+    const method = call[1];
+    call = target[method](false);
+  }
+  console.log(Cell.count + " cells");
+  console.log();
+
+  counter.count = 0;
+  Cell.count = 0;
+  a.cell = new Cell();
   try {
     a.go();
   }
   catch (e) {
     console.log(e);
   }
-
   console.log(Cell.count + " cells");
+  console.log();
 }
 
 inf();
-console.log();
 busy_beaver_2();
-console.log();
 busy_beaver_4();

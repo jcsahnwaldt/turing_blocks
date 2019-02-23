@@ -6,9 +6,10 @@ class StepLeft {
     Object.seal(this);
   }
 
-  doMove() {
+  doMove(call = true) {
     this.action.next.cell = this.action.current.cell.left();
-    this.action.doNext();
+    if (call) this.action.doNext();
+    else return [this.action, 'doNext'];
   }
 
   toString() {
@@ -23,9 +24,10 @@ class StepRight {
     Object.seal(this);
   }
 
-  doMove() {
+  doMove(call = true) {
     this.action.next.cell = this.action.current.cell.right();
-    this.action.doNext();
+    if (call) this.action.doNext();
+    else return [this.action, 'doNext'];
   }
 
   toString() {
@@ -40,9 +42,10 @@ class StepNone {
     Object.seal(this);
   }
 
-  doMove() {
+  doMove(call = true) {
     this.action.next.cell = this.action.current.cell;
-    this.action.doNext();
+    if (call) this.action.doNext();
+    else return [this.action, 'doNext'];
   }
 
   toString() {
