@@ -32,7 +32,7 @@ class Goto extends Action {
   constructor(name, current, next, value, step, counter, max = -1) {
     super(name, current, next, value, step, counter);
     this.max = max;
-    Object.seal(this);
+    Object.freeze(this);
   }
 
   toString() {
@@ -49,7 +49,7 @@ class Halt extends Action {
 
   constructor(name, state, value, step, counter) {
     super(name, state, state, value, step, counter);
-    Object.seal(this);
+    Object.freeze(this);
   }
 
   toString() {
