@@ -2,48 +2,54 @@
 #include <stddef.h>
 #include <iostream>
 
-class block_ptr final {
+class slot final {
 public:
-  void** p;
-  friend std::ostream& operator<<(std::ostream&, block_ptr&);
+  void** t;
+  friend std::ostream& operator<<(std::ostream&, slot&);
 public:
-  block_ptr(size_t size) :
-    p(new void*[size]) {}
+  typedef void (method)(slot);
 
-  ~block_ptr() {
-    delete[] p;
+  void alloc(size_t size) {
+    t = new void*[size];
   }
 
-  block_ptr& operator[](size_t index) {
-    return (block_ptr&)p[index];
+  void free() {
+    delete[] t;
   }
 
-  void operator=(const block_ptr& that) {
-    p = that.p;
+  slot& operator[](size_t index) {
+    return (slot&)t[index];
   }
 
-  void operator=(void f(block_ptr&)) {
-    p = (void**)f;
+  void operator=(const slot& that) {
+    t = that.t;
+  }
+
+  void operator=(method *f) {
+    t = (void**)f;
   }
 
   void operator()(size_t index) {
-    ((void (*)(block_ptr&))p[index])(*this);
+    method* f = (method*)t[index];
+    f(*this);
   }
 
 };
 
-std::ostream& operator<<(std::ostream& os, block_ptr& p) {
-  os << &p << "->" << p.p;
+std::ostream& operator<<(std::ostream& os, slot& s) {
+  os << &s << "->" << s.t;
   return os;
 }
 
-void foo(block_ptr& b) {
-  std::cout << "foo(" << b << ")" << std::endl;
+void foo(slot s) {
+  std::cout << "foo(" << s << ")" << std::endl;
 }
 
 int main(void) {
-  block_ptr b(2);
-  block_ptr c(2);
+  slot b;
+  b.alloc(2);
+  slot c;
+  c.alloc(2);
   b[0] = c;
   b[0][1] = b[0];
   b[1] = foo;
@@ -54,7 +60,9 @@ int main(void) {
   std::cout << "b[0] " << b[0] << std::endl;
   std::cout << "b[1] " << b[1] << std::endl;
   std::cout << "foo " << (void*)foo << std::endl;
-  std::cout << "b.p[0] " << b.p[0] << std::endl;
-  std::cout << "c.p[1] " << c.p[1] << std::endl;
+  std::cout << "b.t[0] " << b.t[0] << std::endl;
+  std::cout << "c.t[1] " << c.t[1] << std::endl;
+  c.free();
+  b.free();
   return 0;
 }
