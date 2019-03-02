@@ -18,6 +18,7 @@ static void action_print(action_t* a) {
 static void do_cell(action_t* a) {
   (*a->counter)++;
   a->print(a);
+
   a->current->cell->value = a->value;
   a->step->action = a;
   CALL(a->step, do_move);
@@ -25,6 +26,7 @@ static void do_cell(action_t* a) {
 
 static void goto_next(action_t* a) {
   if (a->max >= 0 && *a->counter >= a->max) return;
+
   CALL(a->next, go);
 }
 
