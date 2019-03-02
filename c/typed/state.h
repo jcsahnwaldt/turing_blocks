@@ -3,10 +3,10 @@
 
 #include <iostream>
 
-class cell;
-class action;
+struct cell;
+struct action;
 
-class state final {
+struct state final {
 private:
   const char* const name;
   friend std::ostream& operator<<(std::ostream&, const state*);

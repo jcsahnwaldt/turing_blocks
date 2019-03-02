@@ -4,9 +4,9 @@
 #include <iostream>
 
 struct value;
-class cells;
+struct cells;
 
-class cell final {
+struct cell final {
 private:
   const long id;
   cells& cells;

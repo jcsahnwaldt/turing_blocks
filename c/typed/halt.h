@@ -3,7 +3,7 @@
 
 #include "action.h"
 
-class halt final : public action {
+struct halt final : public action {
 protected:
   void print() override;
 public:

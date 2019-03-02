@@ -3,9 +3,9 @@
 
 #include "action.h"
 
-class state;
+struct state;
 
-class goto final : public action {
+struct goto final : public action {
 private:
   const long max; // max number of actions, < 0 means unbounded
 protected:

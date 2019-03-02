@@ -3,9 +3,9 @@
 
 struct value;
 struct step;
-class state;
+struct state;
 
-class action {
+struct action {
 protected:
   const char* const name; // name, only used for logging
   value* const value; // new value for current cell

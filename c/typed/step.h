@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-class action;
+struct action;
 
 struct step {
   action* action;

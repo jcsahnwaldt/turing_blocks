@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-class state;
+struct state;
 
 struct value {
   state* state;
