@@ -1,9 +1,9 @@
 #ifndef HALT_HPP
 #define HALT_HPP
 
-#include "Action.h"
+#include "action.h"
 
-class Halt final : public Action {
+class Halt final : public action {
 protected:
   void print() override;
 public:

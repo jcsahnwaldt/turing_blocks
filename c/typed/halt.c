@@ -9,10 +9,10 @@
 #include "State.h"
 
 Halt::Halt(const char* n, State& s, Value& v, Step& t, long& c) :
-  Action(n, s, s, v, t, c) {}
+  action(n, s, s, v, t, c) {}
 
 void Halt::print() {
-  Action::print();
+  action::print();
   std::cout << "halt" << std::endl;
 }
 

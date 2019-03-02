@@ -3,10 +3,10 @@
 
 #include "State.h"
 #include "Cell.h"
-#include "Action.h"
+#include "action.h"
 #include "Value.h"
 
-State::State(const char* n, Action& a0, Action& a1) :
+State::State(const char* n, action& a0, action& a1) :
   name(n), action0(&a0), action1(&a1) {}
 
 void State::go() {

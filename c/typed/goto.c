@@ -9,10 +9,10 @@
 #include "State.h"
 
 Goto::Goto(const char* n, State& cs, State& ns, Value& v, Step& t, long& c, long m) :
-  Action(n, cs, ns, v, t, c), max(m) {}
+  action(n, cs, ns, v, t, c), max(m) {}
 
 void Goto::print() {
-  Action::print();
+  action::print();
   std::cout << "goto " << next << std::endl;
 }
 

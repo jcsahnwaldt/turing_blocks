@@ -2,7 +2,7 @@
 #include "Value.h"
 
 #include "State.h"
-#include "Action.h"
+#include "action.h"
 
 void Value0::do_action() {
   state->action0->do_cell();

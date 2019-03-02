@@ -4,16 +4,16 @@
 #include <iostream>
 
 class Cell;
-class Action;
+class action;
 
 class State final {
 private:
   const char* const name;
   friend std::ostream& operator<<(std::ostream&, const State*);
 public:
-  State(const char* name, Action& action0, Action& action1);
-  Action* const action0;
-  Action* const action1;
+  State(const char* name, action& action0, action& action1);
+  action* const action0;
+  action* const action1;
 
   Cell* cell = nullptr; // current cell
   void go();

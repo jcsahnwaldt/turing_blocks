@@ -1,11 +1,11 @@
 #ifndef GOTO_HPP
 #define GOTO_HPP
 
-#include "Action.h"
+#include "action.h"
 
 class State;
 
-class Goto final : public Action {
+class Goto final : public action {
 private:
   const long max; // max number of actions, < 0 means unbounded
 protected:

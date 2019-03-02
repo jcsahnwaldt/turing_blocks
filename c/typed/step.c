@@ -1,7 +1,7 @@
 
 #include "Step.h"
 
-#include "Action.h"
+#include "action.h"
 #include "State.h"
 #include "Cell.h"
 

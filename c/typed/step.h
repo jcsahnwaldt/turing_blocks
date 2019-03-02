@@ -3,10 +3,10 @@
 
 #include <iostream>
 
-class Action;
+class action;
 
 struct Step {
-  Action* action;
+  action* action;
   virtual void do_move() = 0;
   virtual void print(std::ostream&) const = 0;
 };
