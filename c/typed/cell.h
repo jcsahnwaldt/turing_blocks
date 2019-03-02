@@ -16,5 +16,6 @@ struct cell_t {
 };
 
 void cell_init(cell_t*, long id, value_t*, long* count);
+void cell_destroy(cell_t*);
 
 #endif

@@ -34,3 +34,21 @@ void cell_init(cell_t* c, long id, value_t* v, long* p) {
   c->left = left;
   c->right = right;
 }
+
+void cell_destroy(cell_t* c) {
+  cell_t* n;
+
+  n = c->_left;
+  while (n) {
+    cell_t* t = n->_left;
+    free(n);
+    n = t;
+  }
+
+  n = c->_right;
+  while (n) {
+    cell_t* t = n->_right;
+    free(n);
+    n = t;
+  }
+}

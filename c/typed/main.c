@@ -43,6 +43,8 @@ void busy_beaver_2() {
 
   CALL(&a, go);
 
+  cell_destroy(&cell);
+
   printf("%ld cells\n", cells);
 }
 
@@ -87,6 +89,8 @@ void busy_beaver_4() {
 
   CALL(&a, go);
 
+  cell_destroy(&cell);
+
   printf("%ld cells\n", cells);
 }
 
@@ -117,6 +121,8 @@ void inf() {
   a.cell = &cell;
 
   CALL(&a, go);
+
+  cell_destroy(&cell);
 
   printf("%ld cells\n", cells);
 }
