@@ -5,27 +5,27 @@
 
 class action;
 
-struct Step {
+struct step {
   action* action;
   virtual void do_move() = 0;
   virtual void print(std::ostream&) const = 0;
 };
 
-struct StepLeft final : Step {
+struct stepLeft final : step {
   void do_move() override;
   void print(std::ostream&) const override;
 };
 
-struct StepRight final : Step {
+struct stepRight final : step {
   void do_move() override;
   void print(std::ostream&) const override;
 };
 
-struct StepNone final : Step {
+struct stepNone final : step {
   void do_move() override;
   void print(std::ostream&) const override;
 };
 
-std::ostream& operator<<(std::ostream&, const Step*);
+std::ostream& operator<<(std::ostream&, const step*);
 
 #endif

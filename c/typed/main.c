@@ -8,15 +8,15 @@
 #include "action.h"
 #include "goto.h"
 #include "halt.h"
-#include "Step.h"
+#include "step.h"
 
 // see http://www.logique.jussieu.fr/~michel/ha.html#tm22
 void busy_beaver_2() {
   Value0 ZERO;
   Value1 ONE;
 
-  StepLeft LEFT;
-  StepRight RIGHT;
+  stepLeft LEFT;
+  stepRight RIGHT;
 
   std::vector<state> s;
   s.reserve(2);
@@ -47,8 +47,8 @@ void busy_beaver_4() {
   Value0 ZERO;
   Value1 ONE;
 
-  StepLeft LEFT;
-  StepRight RIGHT;
+  stepLeft LEFT;
+  stepRight RIGHT;
 
   std::vector<state> s;
   s.reserve(4);
@@ -84,8 +84,8 @@ void inf() {
   Value0 ZERO;
   Value1 ONE;
 
-  StepLeft LEFT;
-  StepRight RIGHT;
+  stepLeft LEFT;
+  stepRight RIGHT;
 
   std::vector<state> s;
   s.reserve(1);

@@ -11,7 +11,7 @@ private:
 protected:
   void print() override;
 public:
-  goto(const char* name, state& current, state& next, Value& value, Step& step, long& count, long max = -1);
+  goto(const char* name, state& current, state& next, Value& value, step& step, long& count, long max = -1);
   void do_cell() override;
   void do_next() override;
 };

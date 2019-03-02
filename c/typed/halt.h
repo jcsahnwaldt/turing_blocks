@@ -7,7 +7,7 @@ class halt final : public action {
 protected:
   void print() override;
 public:
-  halt(const char* name, state& state, Value& value, Step& step, long& count);
+  halt(const char* name, state& state, Value& value, step& step, long& count);
   void do_cell() override;
   void do_next() override;
 };

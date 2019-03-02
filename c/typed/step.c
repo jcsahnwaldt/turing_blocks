@@ -1,38 +1,38 @@
 
-#include "Step.h"
+#include "step.h"
 
 #include "action.h"
 #include "state.h"
 #include "cell.h"
 
-void StepLeft::do_move() {
+void stepLeft::do_move() {
   action->next->cell = action->current->cell->left();
   action->do_next();
 }
 
-void StepLeft::print(std::ostream& os) const {
+void stepLeft::print(std::ostream& os) const {
   os << "LEFT";
 }
 
-void StepRight::do_move() {
+void stepRight::do_move() {
   action->next->cell = action->current->cell->right();
   action->do_next();
 }
 
-void StepRight::print(std::ostream& os) const {
+void stepRight::print(std::ostream& os) const {
   os << "RIGHT";
 }
 
-void StepNone::do_move() {
+void stepNone::do_move() {
   action->next->cell = action->current->cell;
   action->do_next();
 }
 
-void StepNone::print(std::ostream& os) const {
+void stepNone::print(std::ostream& os) const {
   os << "NONE";
 }
 
-std::ostream& operator<<(std::ostream& os, const Step* step) {
+std::ostream& operator<<(std::ostream& os, const step* step) {
   step->print(os);
   return os;
 }
