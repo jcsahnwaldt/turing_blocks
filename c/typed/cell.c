@@ -2,6 +2,7 @@
 #include "cell.h"
 
 #include <stdlib.h>
+#include <stdbool.h>
 
 static cell_t* left(cell_t* c) {
   if (! c->_left) {
@@ -35,20 +36,15 @@ void cell_init(cell_t* c, long id, value_t* v, long* p) {
   c->right = right;
 }
 
+static void cell_free(cell_t* p, bool left) {
+  while (p) {
+    cell_t* c = p;
+    p = left ? p->_left : p->_right;
+    free(c);
+  }
+}
+
 void cell_destroy(cell_t* c) {
-  cell_t* n;
-
-  n = c->_left;
-  while (n) {
-    cell_t* t = n->_left;
-    free(n);
-    n = t;
-  }
-
-  n = c->_right;
-  while (n) {
-    cell_t* t = n->_right;
-    free(n);
-    n = t;
-  }
+  cell_free(c->_left, true);
+  cell_free(c->_right, false);
 }
