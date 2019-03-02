@@ -3,7 +3,7 @@
 
 struct Value;
 struct Step;
-class State;
+class state;
 
 class action {
 protected:
@@ -13,9 +13,9 @@ protected:
   long& count; // number of actions so far
   virtual void print();
 public:
-  action(const char* name, State& current, State& next, Value& value, Step& step, long& count);
-  State* const current; // current state
-  State* const next; // next state
+  action(const char* name, state& current, state& next, Value& value, Step& step, long& count);
+  state* const current; // current state
+  state* const next; // next state
   virtual void do_cell() = 0;
   virtual void do_next() = 0;
 };

@@ -6,12 +6,12 @@
 class cell;
 class action;
 
-class State final {
+class state final {
 private:
   const char* const name;
-  friend std::ostream& operator<<(std::ostream&, const State*);
+  friend std::ostream& operator<<(std::ostream&, const state*);
 public:
-  State(const char* name, action& action0, action& action1);
+  state(const char* name, action& action0, action& action1);
   action* const action0;
   action* const action1;
 
@@ -19,6 +19,6 @@ public:
   void go();
 };
 
-std::ostream& operator<<(std::ostream&, const State*);
+std::ostream& operator<<(std::ostream&, const state*);
 
 #endif

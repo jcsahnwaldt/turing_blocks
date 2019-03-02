@@ -2,7 +2,7 @@
 #include "Step.h"
 
 #include "action.h"
-#include "State.h"
+#include "state.h"
 #include "cell.h"
 
 void StepLeft::do_move() {

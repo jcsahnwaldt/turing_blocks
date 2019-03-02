@@ -1,7 +1,7 @@
 
 #include "Value.h"
 
-#include "State.h"
+#include "state.h"
 #include "action.h"
 
 void Value0::do_action() {

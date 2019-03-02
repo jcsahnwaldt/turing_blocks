@@ -6,9 +6,9 @@
 #include "Value.h"
 #include "Step.h"
 #include "cell.h"
-#include "State.h"
+#include "state.h"
 
-halt::halt(const char* n, State& s, Value& v, Step& t, long& c) :
+halt::halt(const char* n, state& s, Value& v, Step& t, long& c) :
   action(n, s, s, v, t, c) {}
 
 void halt::print() {

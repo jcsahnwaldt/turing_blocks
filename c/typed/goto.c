@@ -6,9 +6,9 @@
 #include "Value.h"
 #include "Step.h"
 #include "cell.h"
-#include "State.h"
+#include "state.h"
 
-goto::goto(const char* n, State& cs, State& ns, Value& v, Step& t, long& c, long m) :
+goto::goto(const char* n, state& cs, state& ns, Value& v, Step& t, long& c, long m) :
   action(n, cs, ns, v, t, c), max(m) {}
 
 void goto::print() {

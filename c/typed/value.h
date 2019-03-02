@@ -3,10 +3,10 @@
 
 #include <iostream>
 
-class State;
+class state;
 
 struct Value {
-  State* state;
+  state* state;
   virtual void do_action() = 0;
   virtual void print(std::ostream&) const = 0;
 };

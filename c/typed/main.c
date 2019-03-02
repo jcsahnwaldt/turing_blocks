@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-#include "State.h"
+#include "state.h"
 #include "cells.h"
 #include "cell.h"
 #include "Value.h"
@@ -18,7 +18,7 @@ void busy_beaver_2() {
   StepLeft LEFT;
   StepRight RIGHT;
 
-  std::vector<State> s;
+  std::vector<state> s;
   s.reserve(2);
 
   // A0  A1  B0  B1
@@ -50,7 +50,7 @@ void busy_beaver_4() {
   StepLeft LEFT;
   StepRight RIGHT;
 
-  std::vector<State> s;
+  std::vector<state> s;
   s.reserve(4);
 
   // A0  A1  B0  B1  C0  C1  D0  D1
@@ -87,7 +87,7 @@ void inf() {
   StepLeft LEFT;
   StepRight RIGHT;
 
-  std::vector<State> s;
+  std::vector<state> s;
   s.reserve(1);
 
   long counter = 0;
