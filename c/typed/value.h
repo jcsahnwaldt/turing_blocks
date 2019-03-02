@@ -1,26 +1,19 @@
 #ifndef VALUE_H
 #define VALUE_H
 
-#include <iostream>
+struct state_t;
 
-struct state;
-
-struct value {
-  state* state;
+typedef struct value_t {
+  state* state_t;
   virtual void do_action() = 0;
-  virtual void print(std::ostream&) const = 0;
-};
+} value_t;
 
 struct value0 final : value {
   void do_action() override;
-  void print(std::ostream&) const override;
 };
 
 struct value1 final : value {
   void do_action() override;
-  void print(std::ostream&) const override;
 };
-
-std::ostream& operator<<(std::ostream&, const value*);
 
 #endif

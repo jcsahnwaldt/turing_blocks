@@ -1,23 +1,21 @@
 #ifndef ACTION_H
 #define ACTION_H
 
-struct value;
-struct step;
-struct state;
+struct value_t;
+struct step_t;
+struct state_t;
 
-struct action {
-protected:
+typedef struct action_t {
   const char* const name; // name, only used for logging
-  value* const value; // new value for current cell
-  step* const step; // gets next cell
-  long& count; // number of actions so far
+  value_t* const value; // new value for current cell
+  step_t* const step; // gets next cell
+  long* count; // number of actions so far
   virtual void print();
-public:
-  action(const char* name, state& current, state& next, value& value, step& step, long& count);
+  action(const char* name, state* current, state* next, value* value, step* step, long* count);
   state* const current; // current state
   state* const next; // next state
   virtual void do_cell() = 0;
   virtual void do_next() = 0;
-};
+} action_t;
 
 #endif

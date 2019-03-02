@@ -3,13 +3,11 @@
 
 #include "action.h"
 
-struct halt final : public action {
-protected:
+typdef struct halt_t {
   void print() override;
-public:
-  halt(const char* name, state& state, value& value, step& step, long& count);
+  halt_t(const char* name, state_t* state, value_t* value, step_t* step, long* count);
   void do_cell() override;
   void do_next() override;
-};
+} halt_t;
 
 #endif
