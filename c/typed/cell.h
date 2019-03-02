@@ -15,7 +15,7 @@ struct cell_t {
   cell_t* (*right)(cell_t*);
 };
 
-void cell_init(cell_t*, long id, value_t*, long* count);
-void cell_destroy(cell_t*);
+void init_cell(cell_t*, long id, value_t*, long* count);
+void destroy_cell(cell_t*);
 
 #endif

@@ -10,7 +10,7 @@ struct value_t {
   void (*do_action)(value_t*);
 };
 
-void value_init_0(value_t*);
-void value_init_1(value_t*);
+void init_value_0(value_t*);
+void init_value_1(value_t*);
 
 #endif

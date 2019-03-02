@@ -7,7 +7,7 @@
 static cell_t* left(cell_t* c) {
   if (! c->_left) {
     cell_t* n = malloc(sizeof(cell_t));
-    cell_init(n, c->id - 1, c->def_value, c->counter);
+    init_cell(n, c->id - 1, c->def_value, c->counter);
     n->_right = c;
     c->_left = n;
   }
@@ -17,14 +17,14 @@ static cell_t* left(cell_t* c) {
 static cell_t* right(cell_t* c) {
   if (! c->_right) {
     cell_t* n = malloc(sizeof(cell_t));
-    cell_init(n, c->id + 1, c->def_value, c->counter);
+    init_cell(n, c->id + 1, c->def_value, c->counter);
     n->_left = c;
     c->_right = n;
   }
   return c->_right;
 }
 
-void cell_init(cell_t* c, long id, value_t* v, long* p) {
+void init_cell(cell_t* c, long id, value_t* v, long* p) {
   (*p)++;
   c->id = id;
   c->counter = p;
@@ -36,7 +36,7 @@ void cell_init(cell_t* c, long id, value_t* v, long* p) {
   c->right = right;
 }
 
-static void cell_free(cell_t* p, bool left) {
+static void free_cells(cell_t* p, bool left) {
   while (p) {
     cell_t* c = p;
     p = left ? p->_left : p->_right;
@@ -44,7 +44,7 @@ static void cell_free(cell_t* p, bool left) {
   }
 }
 
-void cell_destroy(cell_t* c) {
-  cell_free(c->_left, true);
-  cell_free(c->_right, false);
+void destroy_cell(cell_t* c) {
+  free_cells(c->_left, true);
+  free_cells(c->_right, false);
 }

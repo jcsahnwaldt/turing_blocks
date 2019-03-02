@@ -10,8 +10,8 @@ struct step_t {
   void (*do_move)(step_t*);
 };
 
-void step_init_left(step_t*);
-void step_init_right(step_t*);
-void step_init_none(step_t*);
+void init_step_left(step_t*);
+void init_step_right(step_t*);
+void init_step_none(step_t*);
 
 #endif
