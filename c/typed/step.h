@@ -1,5 +1,5 @@
-#ifndef STEP_HPP
-#define STEP_HPP
+#ifndef STEP_H
+#define STEP_H
 
 #include <iostream>
 

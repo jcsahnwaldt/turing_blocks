@@ -1,5 +1,5 @@
-#ifndef HALT_HPP
-#define HALT_HPP
+#ifndef HALT_H
+#define HALT_H
 
 #include "action.h"
 

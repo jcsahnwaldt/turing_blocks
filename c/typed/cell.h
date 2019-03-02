@@ -1,5 +1,5 @@
-#ifndef CELL_HPP
-#define CELL_HPP
+#ifndef CELL_H
+#define CELL_H
 
 #include <iostream>
 

@@ -1,5 +1,5 @@
-#ifndef GOTO_HPP
-#define GOTO_HPP
+#ifndef GOTO_H
+#define GOTO_H
 
 #include "action.h"
 

@@ -1,5 +1,5 @@
-#ifndef ACTION_HPP
-#define ACTION_HPP
+#ifndef ACTION_H
+#define ACTION_H
 
 struct value;
 struct step;
