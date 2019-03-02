@@ -5,34 +5,35 @@
 #include "state.h"
 #include "cell.h"
 
-void stepLeft::do_move() {
-  action->next->cell = action->current->cell->left();
-  action->do_next();
+static void move_left(step_t* s) {
+  action_t* a = s->action;
+  a->next->cell = left(a->current->cell);
+  a->do_next(a);
 }
 
-void stepLeft::print(std::ostream& os) const {
-  os << "LEFT";
+void step_init_left(step_t* s) {
+  s->name = "LEFT";
+  s->do_move = move_left;
 }
 
-void stepRight::do_move() {
-  action->next->cell = action->current->cell->right();
-  action->do_next();
+static void move_right(step_t* s) {
+  action_t* a = s->action;
+  a->next->cell = right(a->current->cell);
+  a->do_next(a);
 }
 
-void stepRight::print(std::ostream& os) const {
-  os << "RIGHT";
+void step_init_right(step_t* s) {
+  s->name = "RIGHT";
+  s->do_move = move_right;
 }
 
-void stepNone::do_move() {
-  action->next->cell = action->current->cell;
-  action->do_next();
+static void move_none(step_t* s) {
+  action_t* a = s->action;
+  a->next->cell = a->current->cell;
+  a->do_next(a);
 }
 
-void stepNone::print(std::ostream& os) const {
-  os << "NONE";
-}
-
-std::ostream& operator<<(std::ostream& os, const step* step) {
-  step->print(os);
-  return os;
+void step_init_none(step_t* s) {
+  s->name = "NONE";
+  s->do_move = move_none;
 }

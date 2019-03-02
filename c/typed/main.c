@@ -1,115 +1,130 @@
-#include <iostream>
-#include <vector>
 
 #include "state.h"
-#include "cells.h"
 #include "cell.h"
 #include "value.h"
 #include "action.h"
-#include "goto.h"
-#include "halt.h"
 #include "step.h"
+
+#include <stdio.h>
 
 // see http://www.logique.jussieu.fr/~michel/ha.html#tm22
 void busy_beaver_2() {
-  value0 ZERO;
-  value1 ONE;
+  value_t ZERO;
+  value_init_0(&ZERO);
+  value_t ONE;
+  value_init_1(&ONE);
 
-  stepLeft LEFT;
-  stepRight RIGHT;
-
-  std::vector<state> s;
-  s.reserve(2);
+  step_t LEFT;
+  step_init_left(&LEFT);
+  step_t RIGHT;
+  step_init_right(&RIGHT);
 
   // A0  A1  B0  B1
   // 1RB 1LB 1LA 1RH
   // Σ=4, s=6
 
-  long counter = 0;
-  goto a0("A0", s[0], s[1], ONE, RIGHT, counter);
-  goto a1("A1", s[0], s[1], ONE, LEFT, counter);
-  goto b0("B0", s[1], s[0], ONE, LEFT, counter);
-  halt b1("B1", s[1], ONE, RIGHT, counter);
+  state_t a, b;
 
-  s.emplace_back("A", a0, a1);
-  s.emplace_back("B", b0, b1);
+  long actions = 0;
+  action_t a0, a1, b0, b1;
+  goto_init(&a0, "A0", &a, &b, &ONE, &RIGHT, &actions, -1);
+  goto_init(&a1, "A1", &a, &b, &ONE, &LEFT, &actions, -1);
+  goto_init(&b0, "B0", &b, &a, &ONE, &LEFT, &actions, -1);
+  halt_init(&b1, "B1", &b, &ONE, &RIGHT, &actions);
 
-  cells cells(ZERO);
-  s[0].cell = &cells.init;
+  state_init(&a, "A", &a0, &a1);
+  state_init(&b, "B", &b0, &b1);
 
-  s[0].go();
+  long cells = 0;
+  cell_t cell;
+  cell_init(&cell, 0, &ZERO, &cells);
+  a.cell = &cell;
 
-  std::cout << cells.count() << " cells" << std::endl;
+  (&a)->go(&a);
+
+  printf("%ld cells\n", cells);
 }
 
 // http://www.logique.jussieu.fr/~michel/ha.html#tm42
 void busy_beaver_4() {
-  value0 ZERO;
-  value1 ONE;
+  value_t ZERO;
+  value_init_0(&ZERO);
+  value_t ONE;
+  value_init_1(&ONE);
 
-  stepLeft LEFT;
-  stepRight RIGHT;
-
-  std::vector<state> s;
-  s.reserve(4);
+  step_t LEFT;
+  step_init_left(&LEFT);
+  step_t RIGHT;
+  step_init_right(&RIGHT);
 
   // A0  A1  B0  B1  C0  C1  D0  D1
   // 1RB 1LB 1LA 0LC 1RH 1LD 1RD 0RA
   // Σ=13, s=107
 
-  long counter = 0;
-  goto a0("A0", s[0], s[1], ONE, RIGHT, counter);
-  goto a1("A1", s[0], s[1], ONE, LEFT, counter);
-  goto b0("B0", s[1], s[0], ONE, LEFT, counter);
-  goto b1("B1", s[1], s[2], ZERO, LEFT, counter);
-  halt c0("C0", s[2], ONE, RIGHT, counter);
-  goto c1("C1", s[2], s[3], ONE, LEFT, counter);
-  goto d0("D0", s[3], s[3], ONE, RIGHT, counter);
-  goto d1("D1", s[3], s[0], ZERO, RIGHT, counter);
+  state_t a, b, c, d;
 
-  s.emplace_back("A", a0, a1);
-  s.emplace_back("B", b0, b1);
-  s.emplace_back("C", c0, c1);
-  s.emplace_back("D", d0, d1);
+  long actions = 0;
+  action_t a0, a1, b0, b1, c0, c1, d0, d1;
+  goto_init(&a0, "A0", &a, &b, &ONE, &RIGHT, &actions, -1);
+  goto_init(&a1, "A1", &a, &b, &ONE, &LEFT, &actions, -1);
+  goto_init(&b0, "B0", &b, &a, &ONE, &LEFT, &actions, -1);
+  goto_init(&b1, "B1", &b, &c, &ZERO, &LEFT, &actions, -1);
+  halt_init(&c0, "C0", &c, &ONE, &RIGHT, &actions);
+  goto_init(&c1, "C1", &c, &d, &ONE, &LEFT, &actions, -1);
+  goto_init(&d0, "D0", &d, &d, &ONE, &RIGHT, &actions, -1);
+  goto_init(&d1, "D1", &d, &a, &ZERO, &RIGHT, &actions, -1);
 
-  cells cells(ZERO);
-  s[0].cell = &cells.init;
+  state_init(&a, "A", &a0, &a1);
+  state_init(&b, "B", &b0, &b1);
+  state_init(&c, "C", &c0, &c1);
+  state_init(&d, "D", &d0, &d1);
 
-  s[0].go();
+  long cells = 0;
+  cell_t cell;
+  cell_init(&cell, 0, &ZERO, &cells);
+  a.cell = &cell;
 
-  std::cout << cells.count() << " cells" << std::endl;
+  (&a)->go(&a);
+
+  printf("%ld cells\n", cells);
 }
 
 void inf() {
-  value0 ZERO;
-  value1 ONE;
+  value_t ZERO;
+  value_init_0(&ZERO);
+  value_t ONE;
+  value_init_1(&ONE);
 
-  stepLeft LEFT;
-  stepRight RIGHT;
+  step_t LEFT;
+  step_init_left(&LEFT);
+  step_t RIGHT;
+  step_init_right(&RIGHT);
 
-  std::vector<state> s;
-  s.reserve(1);
+  state_t a;
 
-  long counter = 0;
+  long actions = 0;
   const long max = 1000000;
-  goto a0("A0", s[0], s[0], ONE, RIGHT, counter, max);
-  halt a1("A1", s[0], ONE, LEFT, counter); // never reached
+  action_t a0, a1;
+  goto_init(&a0, "A0", &a, &a, &ONE, &RIGHT, &actions, max);
+  halt_init(&a1, "A1", &a, &ONE, &LEFT, &actions); // never reached
 
-  s.emplace_back("A", a0, a1);
+  state_init(&a, "A", &a0, &a1);
 
-  cells cells(ZERO);
-  s[0].cell = &cells.init;
+  long cells = 0;
+  cell_t cell;
+  cell_init(&cell, 0, &ZERO, &cells);
+  a.cell = &cell;
 
-  s[0].go();
+  (&a)->go(&a);
 
-  std::cout << cells.count() << " cells" << std::endl;
+  printf("%ld cells\n", cells);
 }
 
 int main() {
   inf();
-  std::cout << std::endl;
+  printf("\n");
   busy_beaver_2();
-  std::cout << std::endl;
+  printf("\n");
   busy_beaver_4();
   return 0;
 }

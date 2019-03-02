@@ -1,19 +1,16 @@
 #ifndef VALUE_H
 #define VALUE_H
 
-struct state_t;
+typedef struct state_t state_t;
 
-typedef struct value_t {
-  state* state_t;
-  virtual void do_action() = 0;
-} value_t;
-
-struct value0 final : value {
-  void do_action() override;
+typedef struct value_t value_t;
+struct value_t {
+  const char* name;
+  state_t* state;
+  void (*do_action)(value_t*);
 };
 
-struct value1 final : value {
-  void do_action() override;
-};
+void value_init_0(value_t*);
+void value_init_1(value_t*);
 
 #endif

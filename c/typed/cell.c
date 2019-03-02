@@ -1,27 +1,34 @@
 
 #include "cell.h"
-#include "cells.h"
 
-cell::cell(long i, cells& c) :
-  id(i), cells(c), value(&c.value) {}
+#include <stdlib.h>
 
-cell* cell::left() {
-  if (!_left) {
-    _left = &cells.cells.emplace_front(id - 1, cells);
-    _left->_right = this;
+cell_t* left(cell_t* c) {
+  if (! c->_left) {
+    cell_t* n = malloc(sizeof(cell_t));
+    cell_init(n, c->id - 1, c->def_value, c->counter);
+    n->_right = c;
+    c->_left = n;
   }
-  return _left;
+  return c->_left;
 }
 
-cell* cell::right() {
-  if (!_right) {
-    _right = &cells.cells.emplace_back(id + 1, cells);
-    _right->_left = this;
+cell_t* right(cell_t* c) {
+  if (! c->_right) {
+    cell_t* n = malloc(sizeof(cell_t));
+    cell_init(n, c->id + 1, c->def_value, c->counter);
+    n->_left = c;
+    c->_right = n;
   }
-  return _right;
+  return c->_right;
 }
 
-std::ostream& operator<<(std::ostream& os, const cell* cell) {
-  os << "cell " << cell->id;
-  return os;
+void cell_init(cell_t* c, long id, value_t* v, long* p) {
+  (*p)++;
+  c->id = id;
+  c->counter = p;
+  c->def_value = v;
+  c->value = v;
+  c->_left = NULL;
+  c->_right = NULL;
 }

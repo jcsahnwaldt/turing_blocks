@@ -4,23 +4,22 @@
 #include "state.h"
 #include "action.h"
 
-void value0::do_action() {
-  state->action0->do_cell();
+static void do_action_0(value_t* v) {
+  action_t* a = v->state->action_0;
+  a->do_cell(a);
 }
 
-void value0::print(std::ostream& os) const {
-  os << "ZERO";
+void value_init_0(value_t* v) {
+  v->name = "ZERO";
+  v->do_action = do_action_0;
 }
 
-void value1::do_action() {
-  state->action1->do_cell();
+static void do_action_1(value_t* v) {
+  action_t* a = v->state->action_1;
+  a->do_cell(a);
 }
 
-void value1::print(std::ostream& os) const {
-  os << "ONE";
-}
-
-std::ostream& operator<<(std::ostream& os, const value* value) {
-  value->print(os);
-  return os;
+void value_init_1(value_t* v) {
+  v->name = "ONE";
+  v->do_action = do_action_1;
 }
