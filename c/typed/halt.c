@@ -3,12 +3,12 @@
 
 #include <iostream>
 
-#include "Value.h"
+#include "value.h"
 #include "step.h"
 #include "cell.h"
 #include "state.h"
 
-halt::halt(const char* n, state& s, Value& v, step& t, long& c) :
+halt::halt(const char* n, state& s, value& v, step& t, long& c) :
   action(n, s, s, v, t, c) {}
 
 void halt::print() {

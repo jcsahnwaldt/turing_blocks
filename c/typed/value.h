@@ -5,22 +5,22 @@
 
 class state;
 
-struct Value {
+struct value {
   state* state;
   virtual void do_action() = 0;
   virtual void print(std::ostream&) const = 0;
 };
 
-struct Value0 final : Value {
+struct value0 final : value {
   void do_action() override;
   void print(std::ostream&) const override;
 };
 
-struct Value1 final : Value {
+struct value1 final : value {
   void do_action() override;
   void print(std::ostream&) const override;
 };
 
-std::ostream& operator<<(std::ostream&, const Value*);
+std::ostream& operator<<(std::ostream&, const value*);
 
 #endif

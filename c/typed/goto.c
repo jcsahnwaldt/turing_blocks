@@ -3,12 +3,12 @@
 
 #include <iostream>
 
-#include "Value.h"
+#include "value.h"
 #include "step.h"
 #include "cell.h"
 #include "state.h"
 
-goto::goto(const char* n, state& cs, state& ns, Value& v, step& t, long& c, long m) :
+goto::goto(const char* n, state& cs, state& ns, value& v, step& t, long& c, long m) :
   action(n, cs, ns, v, t, c), max(m) {}
 
 void goto::print() {

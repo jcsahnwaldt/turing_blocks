@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-struct Value;
+struct value;
 class cells;
 
 class cell final {
@@ -16,7 +16,7 @@ private:
 public:
   cell(long id, cells& cells); // should be private, is public for deque.emplace_*()
 
-  Value* value; // current value
+  value* value; // current value
   cell* left();
   cell* right();
 };

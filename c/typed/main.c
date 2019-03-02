@@ -4,7 +4,7 @@
 #include "state.h"
 #include "cells.h"
 #include "cell.h"
-#include "Value.h"
+#include "value.h"
 #include "action.h"
 #include "goto.h"
 #include "halt.h"
@@ -12,8 +12,8 @@
 
 // see http://www.logique.jussieu.fr/~michel/ha.html#tm22
 void busy_beaver_2() {
-  Value0 ZERO;
-  Value1 ONE;
+  value0 ZERO;
+  value1 ONE;
 
   stepLeft LEFT;
   stepRight RIGHT;
@@ -44,8 +44,8 @@ void busy_beaver_2() {
 
 // http://www.logique.jussieu.fr/~michel/ha.html#tm42
 void busy_beaver_4() {
-  Value0 ZERO;
-  Value1 ONE;
+  value0 ZERO;
+  value1 ONE;
 
   stepLeft LEFT;
   stepRight RIGHT;
@@ -81,8 +81,8 @@ void busy_beaver_4() {
 }
 
 void inf() {
-  Value0 ZERO;
-  Value1 ONE;
+  value0 ZERO;
+  value1 ONE;
 
   stepLeft LEFT;
   stepRight RIGHT;

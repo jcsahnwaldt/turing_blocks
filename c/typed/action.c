@@ -1,12 +1,12 @@
 
 #include "action.h"
 
-#include "Value.h"
+#include "value.h"
 #include "step.h"
 #include "state.h"
 #include "cell.h"
 
-action::action(const char* n, state& cs, state& ns, Value& v, step& t, long& c) :
+action::action(const char* n, state& cs, state& ns, value& v, step& t, long& c) :
   name(n), value(&v), step(&t), count(c), current(&cs), next(&ns) {}
 
 void action::print() {
