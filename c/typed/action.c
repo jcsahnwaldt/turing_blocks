@@ -6,6 +6,7 @@
 #include "state.h"
 #include "cell.h"
 
+#include "method.h"
 #include <stdio.h>
 
 static void action_print(action_t* a) {
@@ -19,12 +20,12 @@ static void do_cell(action_t* a) {
   a->print(a);
   a->current->cell->value = a->value;
   a->step->action = a;
-  a->step->do_move(a->step);
+  CALL(a->step, do_move);
 }
 
 static void goto_next(action_t* a) {
   if (a->max >= 0 && *a->counter >= a->max) return;
-  a->next->go(a->next);
+  CALL(a->next, go);
 }
 
 static void goto_print(action_t* a) {

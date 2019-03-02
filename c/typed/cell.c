@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 
-cell_t* left(cell_t* c) {
+static cell_t* left(cell_t* c) {
   if (! c->_left) {
     cell_t* n = malloc(sizeof(cell_t));
     cell_init(n, c->id - 1, c->def_value, c->counter);
@@ -13,7 +13,7 @@ cell_t* left(cell_t* c) {
   return c->_left;
 }
 
-cell_t* right(cell_t* c) {
+static cell_t* right(cell_t* c) {
   if (! c->_right) {
     cell_t* n = malloc(sizeof(cell_t));
     cell_init(n, c->id + 1, c->def_value, c->counter);
@@ -31,4 +31,6 @@ void cell_init(cell_t* c, long id, value_t* v, long* p) {
   c->value = v;
   c->_left = NULL;
   c->_right = NULL;
+  c->left = left;
+  c->right = right;
 }

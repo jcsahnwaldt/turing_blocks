@@ -6,6 +6,7 @@
 #include "step.h"
 
 #include <stdio.h>
+#include "method.h"
 
 // see http://www.logique.jussieu.fr/~michel/ha.html#tm22
 void busy_beaver_2() {
@@ -40,7 +41,7 @@ void busy_beaver_2() {
   cell_init(&cell, 0, &ZERO, &cells);
   a.cell = &cell;
 
-  (&a)->go(&a);
+  CALL(&a, go);
 
   printf("%ld cells\n", cells);
 }
@@ -84,7 +85,7 @@ void busy_beaver_4() {
   cell_init(&cell, 0, &ZERO, &cells);
   a.cell = &cell;
 
-  (&a)->go(&a);
+  CALL(&a, go);
 
   printf("%ld cells\n", cells);
 }
@@ -115,7 +116,7 @@ void inf() {
   cell_init(&cell, 0, &ZERO, &cells);
   a.cell = &cell;
 
-  (&a)->go(&a);
+  CALL(&a, go);
 
   printf("%ld cells\n", cells);
 }

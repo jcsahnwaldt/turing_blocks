@@ -11,10 +11,10 @@ struct cell_t {
   value_t* value; // current value
   cell_t* _left;
   cell_t* _right;
+  cell_t* (*left)(cell_t*);
+  cell_t* (*right)(cell_t*);
 };
 
 void cell_init(cell_t*, long id, value_t*, long* count);
-cell_t* left(cell_t*);
-cell_t* right(cell_t*);
 
 #endif

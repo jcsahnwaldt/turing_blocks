@@ -4,10 +4,11 @@
 #include "action.h"
 #include "value.h"
 
+#include "method.h"
+
 void go(state_t* s) {
-  value_t* v = s->cell->value;
-  v->state = s;
-  v->do_action(v);
+  s->cell->value->state = s;
+  CALL(s->cell->value, do_action);
 }
 
 void state_init(state_t* s, const char* n, action_t* a_0, action_t* a_1) {
