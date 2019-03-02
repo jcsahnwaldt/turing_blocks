@@ -1,11 +1,11 @@
 
-#include "Cell.h"
-#include "Cells.h"
+#include "cell.h"
+#include "cells.h"
 
-Cell::Cell(long i, Cells& c) :
+cell::cell(long i, cells& c) :
   id(i), cells(c), value(&c.value) {}
 
-Cell* Cell::left() {
+cell* cell::left() {
   if (!_left) {
     _left = &cells.cells.emplace_front(id - 1, cells);
     _left->_right = this;
@@ -13,7 +13,7 @@ Cell* Cell::left() {
   return _left;
 }
 
-Cell* Cell::right() {
+cell* cell::right() {
   if (!_right) {
     _right = &cells.cells.emplace_back(id + 1, cells);
     _right->_left = this;
@@ -21,7 +21,7 @@ Cell* Cell::right() {
   return _right;
 }
 
-std::ostream& operator<<(std::ostream& os, const Cell* cell) {
+std::ostream& operator<<(std::ostream& os, const cell* cell) {
   os << "cell " << cell->id;
   return os;
 }

@@ -2,8 +2,8 @@
 #include <vector>
 
 #include "State.h"
-#include "Cells.h"
-#include "Cell.h"
+#include "cells.h"
+#include "cell.h"
 #include "Value.h"
 #include "action.h"
 #include "Goto.h"
@@ -34,7 +34,7 @@ void busy_beaver_2() {
   s.emplace_back("A", a0, a1);
   s.emplace_back("B", b0, b1);
 
-  Cells cells(ZERO);
+  cells cells(ZERO);
   s[0].cell = &cells.init;
 
   s[0].go();
@@ -72,7 +72,7 @@ void busy_beaver_4() {
   s.emplace_back("C", c0, c1);
   s.emplace_back("D", d0, d1);
 
-  Cells cells(ZERO);
+  cells cells(ZERO);
   s[0].cell = &cells.init;
 
   s[0].go();
@@ -97,7 +97,7 @@ void inf() {
 
   s.emplace_back("A", a0, a1);
 
-  Cells cells(ZERO);
+  cells cells(ZERO);
   s[0].cell = &cells.init;
 
   s[0].go();

@@ -5,7 +5,7 @@
 
 #include "Value.h"
 #include "Step.h"
-#include "Cell.h"
+#include "cell.h"
 #include "State.h"
 
 Halt::Halt(const char* n, State& s, Value& v, Step& t, long& c) :

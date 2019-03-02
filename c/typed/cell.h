@@ -4,23 +4,23 @@
 #include <iostream>
 
 struct Value;
-class Cells;
+class cells;
 
-class Cell final {
+class cell final {
 private:
   const long id;
-  Cells& cells;
-  Cell* _left = nullptr;
-  Cell* _right = nullptr;
-  friend std::ostream& operator<<(std::ostream&, const Cell*);
+  cells& cells;
+  cell* _left = nullptr;
+  cell* _right = nullptr;
+  friend std::ostream& operator<<(std::ostream&, const cell*);
 public:
-  Cell(long id, Cells& cells); // should be private, is public for deque.emplace_*()
+  cell(long id, cells& cells); // should be private, is public for deque.emplace_*()
 
   Value* value; // current value
-  Cell* left();
-  Cell* right();
+  cell* left();
+  cell* right();
 };
 
-std::ostream& operator<<(std::ostream&, const Cell*);
+std::ostream& operator<<(std::ostream&, const cell*);
 
 #endif

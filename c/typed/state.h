@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-class Cell;
+class cell;
 class action;
 
 class State final {
@@ -15,7 +15,7 @@ public:
   action* const action0;
   action* const action1;
 
-  Cell* cell = nullptr; // current cell
+  cell* cell = nullptr; // current cell
   void go();
 };
 

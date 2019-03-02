@@ -2,7 +2,7 @@
 #include <iostream>
 
 #include "State.h"
-#include "Cell.h"
+#include "cell.h"
 #include "action.h"
 #include "Value.h"
 

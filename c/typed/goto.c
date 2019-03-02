@@ -5,7 +5,7 @@
 
 #include "Value.h"
 #include "Step.h"
-#include "Cell.h"
+#include "cell.h"
 #include "State.h"
 
 Goto::Goto(const char* n, State& cs, State& ns, Value& v, Step& t, long& c, long m) :

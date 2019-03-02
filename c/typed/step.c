@@ -3,7 +3,7 @@
 
 #include "action.h"
 #include "State.h"
-#include "Cell.h"
+#include "cell.h"
 
 void StepLeft::do_move() {
   action->next->cell = action->current->cell->left();
