@@ -6,7 +6,7 @@
 #include "cell.h"
 #include "Value.h"
 #include "action.h"
-#include "Goto.h"
+#include "goto.h"
 #include "Halt.h"
 #include "Step.h"
 
@@ -26,9 +26,9 @@ void busy_beaver_2() {
   // Σ=4, s=6
 
   long counter = 0;
-  Goto a0("A0", s[0], s[1], ONE, RIGHT, counter);
-  Goto a1("A1", s[0], s[1], ONE, LEFT, counter);
-  Goto b0("B0", s[1], s[0], ONE, LEFT, counter);
+  goto a0("A0", s[0], s[1], ONE, RIGHT, counter);
+  goto a1("A1", s[0], s[1], ONE, LEFT, counter);
+  goto b0("B0", s[1], s[0], ONE, LEFT, counter);
   Halt b1("B1", s[1], ONE, RIGHT, counter);
 
   s.emplace_back("A", a0, a1);
@@ -58,14 +58,14 @@ void busy_beaver_4() {
   // Σ=13, s=107
 
   long counter = 0;
-  Goto a0("A0", s[0], s[1], ONE, RIGHT, counter);
-  Goto a1("A1", s[0], s[1], ONE, LEFT, counter);
-  Goto b0("B0", s[1], s[0], ONE, LEFT, counter);
-  Goto b1("B1", s[1], s[2], ZERO, LEFT, counter);
+  goto a0("A0", s[0], s[1], ONE, RIGHT, counter);
+  goto a1("A1", s[0], s[1], ONE, LEFT, counter);
+  goto b0("B0", s[1], s[0], ONE, LEFT, counter);
+  goto b1("B1", s[1], s[2], ZERO, LEFT, counter);
   Halt c0("C0", s[2], ONE, RIGHT, counter);
-  Goto c1("C1", s[2], s[3], ONE, LEFT, counter);
-  Goto d0("D0", s[3], s[3], ONE, RIGHT, counter);
-  Goto d1("D1", s[3], s[0], ZERO, RIGHT, counter);
+  goto c1("C1", s[2], s[3], ONE, LEFT, counter);
+  goto d0("D0", s[3], s[3], ONE, RIGHT, counter);
+  goto d1("D1", s[3], s[0], ZERO, RIGHT, counter);
 
   s.emplace_back("A", a0, a1);
   s.emplace_back("B", b0, b1);
@@ -92,7 +92,7 @@ void inf() {
 
   long counter = 0;
   const long max = 1000000;
-  Goto a0("A0", s[0], s[0], ONE, RIGHT, counter, max);
+  goto a0("A0", s[0], s[0], ONE, RIGHT, counter, max);
   Halt a1("A1", s[0], ONE, LEFT, counter); // never reached
 
   s.emplace_back("A", a0, a1);

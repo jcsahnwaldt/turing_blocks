@@ -2,7 +2,7 @@
 # CXX=clang++
 CFLAGS=-O3 -std=c11 -Wall -Wextra -Wpedantic
 
-main: cell.o Value.o State.o Step.o action.o Goto.o Halt.o
+main: cell.o Value.o State.o Step.o action.o goto.o Halt.o
 
 clean:
 	rm -fr main *.o *.gch *.dSYM
