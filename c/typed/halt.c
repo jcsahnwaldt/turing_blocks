@@ -1,12 +1,12 @@
 
-#include "Halt.hpp"
+#include "Halt.h"
 
 #include <iostream>
 
-#include "Value.hpp"
-#include "Step.hpp"
-#include "Cell.hpp"
-#include "State.hpp"
+#include "Value.h"
+#include "Step.h"
+#include "Cell.h"
+#include "State.h"
 
 Halt::Halt(const char* n, State& s, Value& v, Step& t, long& c) :
   Action(n, s, s, v, t, c) {}

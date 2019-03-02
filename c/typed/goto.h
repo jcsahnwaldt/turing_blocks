@@ -1,7 +1,7 @@
 #ifndef GOTO_HPP
 #define GOTO_HPP
 
-#include "Action.hpp"
+#include "Action.h"
 
 class State;
 

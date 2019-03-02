@@ -1,7 +1,7 @@
 #ifndef HALT_HPP
 #define HALT_HPP
 
-#include "Action.hpp"
+#include "Action.h"
 
 class Halt final : public Action {
 protected:

@@ -1,6 +1,6 @@
 
-#include "Cell.hpp"
-#include "Cells.hpp"
+#include "Cell.h"
+#include "Cells.h"
 
 Cell::Cell(long i, Cells& c) :
   id(i), cells(c), value(&c.value) {}

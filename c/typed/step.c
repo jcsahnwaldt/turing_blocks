@@ -1,9 +1,9 @@
 
-#include "Step.hpp"
+#include "Step.h"
 
-#include "Action.hpp"
-#include "State.hpp"
-#include "Cell.hpp"
+#include "Action.h"
+#include "State.h"
+#include "Cell.h"
 
 void StepLeft::do_move() {
   action->next->cell = action->current->cell->left();

@@ -1,10 +1,10 @@
 
 #include <iostream>
 
-#include "State.hpp"
-#include "Cell.hpp"
-#include "Action.hpp"
-#include "Value.hpp"
+#include "State.h"
+#include "Cell.h"
+#include "Action.h"
+#include "Value.h"
 
 State::State(const char* n, Action& a0, Action& a1) :
   name(n), action0(&a0), action1(&a1) {}

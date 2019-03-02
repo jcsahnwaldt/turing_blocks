@@ -1,10 +1,10 @@
 
-#include "Action.hpp"
+#include "Action.h"
 
-#include "Value.hpp"
-#include "Step.hpp"
-#include "State.hpp"
-#include "Cell.hpp"
+#include "Value.h"
+#include "Step.h"
+#include "State.h"
+#include "Cell.h"
 
 Action::Action(const char* n, State& cs, State& ns, Value& v, Step& t, long& c) :
   name(n), value(&v), step(&t), count(c), current(&cs), next(&ns) {}

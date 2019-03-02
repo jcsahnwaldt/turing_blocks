@@ -1,14 +1,14 @@
 #include <iostream>
 #include <vector>
 
-#include "State.hpp"
-#include "Cells.hpp"
-#include "Cell.hpp"
-#include "Value.hpp"
-#include "Action.hpp"
-#include "Goto.hpp"
-#include "Halt.hpp"
-#include "Step.hpp"
+#include "State.h"
+#include "Cells.h"
+#include "Cell.h"
+#include "Value.h"
+#include "Action.h"
+#include "Goto.h"
+#include "Halt.h"
+#include "Step.h"
 
 // see http://www.logique.jussieu.fr/~michel/ha.html#tm22
 void busy_beaver_2() {

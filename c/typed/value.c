@@ -1,8 +1,8 @@
 
-#include "Value.hpp"
+#include "Value.h"
 
-#include "State.hpp"
-#include "Action.hpp"
+#include "State.h"
+#include "Action.h"
 
 void Value0::do_action() {
   state->action0->do_cell();

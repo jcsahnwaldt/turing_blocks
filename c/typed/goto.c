@@ -1,12 +1,12 @@
 
-#include "Goto.hpp"
+#include "Goto.h"
 
 #include <iostream>
 
-#include "Value.hpp"
-#include "Step.hpp"
-#include "Cell.hpp"
-#include "State.hpp"
+#include "Value.h"
+#include "Step.h"
+#include "Cell.h"
+#include "State.h"
 
 Goto::Goto(const char* n, State& cs, State& ns, Value& v, Step& t, long& c, long m) :
   Action(n, cs, ns, v, t, c), max(m) {}
