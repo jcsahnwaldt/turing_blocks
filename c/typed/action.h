@@ -20,7 +20,7 @@ struct action_t {
   void (*do_next)(action_t*);
 };
 
-void init_goto(action_t*, const char*, state_t* cs, state_t* ns, value_t*, step_t*, long* counter, long max);
+void init_goto(action_t*, const char*, state_t* cs, state_t* ns, value_t*, step_t*, long* counter);
 void init_halt(action_t*, const char*, state_t*, value_t*, step_t*, long* counter);
 
 #endif

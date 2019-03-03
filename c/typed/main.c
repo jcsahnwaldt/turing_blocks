@@ -28,9 +28,9 @@ void busy_beaver_2() {
 
   long actions = 0;
   action_t a0, a1, b0, b1;
-  init_goto(&a0, "A0", &a, &b, &ONE, &RIGHT, &actions, -1);
-  init_goto(&a1, "A1", &a, &b, &ONE, &LEFT, &actions, -1);
-  init_goto(&b0, "B0", &b, &a, &ONE, &LEFT, &actions, -1);
+  init_goto(&a0, "A0", &a, &b, &ONE, &RIGHT, &actions);
+  init_goto(&a1, "A1", &a, &b, &ONE, &LEFT, &actions);
+  init_goto(&b0, "B0", &b, &a, &ONE, &LEFT, &actions);
   init_halt(&b1, "B1", &b, &ONE, &RIGHT, &actions);
 
   init_state(&a, "A", &a0, &a1);
@@ -68,14 +68,14 @@ void busy_beaver_4() {
 
   long actions = 0;
   action_t a0, a1, b0, b1, c0, c1, d0, d1;
-  init_goto(&a0, "A0", &a, &b, &ONE, &RIGHT, &actions, -1);
-  init_goto(&a1, "A1", &a, &b, &ONE, &LEFT, &actions, -1);
-  init_goto(&b0, "B0", &b, &a, &ONE, &LEFT, &actions, -1);
-  init_goto(&b1, "B1", &b, &c, &ZERO, &LEFT, &actions, -1);
+  init_goto(&a0, "A0", &a, &b, &ONE, &RIGHT, &actions);
+  init_goto(&a1, "A1", &a, &b, &ONE, &LEFT, &actions);
+  init_goto(&b0, "B0", &b, &a, &ONE, &LEFT, &actions);
+  init_goto(&b1, "B1", &b, &c, &ZERO, &LEFT, &actions);
   init_halt(&c0, "C0", &c, &ONE, &RIGHT, &actions);
-  init_goto(&c1, "C1", &c, &d, &ONE, &LEFT, &actions, -1);
-  init_goto(&d0, "D0", &d, &d, &ONE, &RIGHT, &actions, -1);
-  init_goto(&d1, "D1", &d, &a, &ZERO, &RIGHT, &actions, -1);
+  init_goto(&c1, "C1", &c, &d, &ONE, &LEFT, &actions);
+  init_goto(&d0, "D0", &d, &d, &ONE, &RIGHT, &actions);
+  init_goto(&d1, "D1", &d, &a, &ZERO, &RIGHT, &actions);
 
   init_state(&a, "A", &a0, &a1);
   init_state(&b, "B", &b0, &b1);
@@ -108,10 +108,10 @@ void inf() {
   state_t a;
 
   long actions = 0;
-  const long max = 1000000;
   action_t a0, a1;
-  init_goto(&a0, "A0", &a, &a, &ONE, &RIGHT, &actions, max);
+  init_goto(&a0, "A0", &a, &a, &ONE, &RIGHT, &actions);
   init_halt(&a1, "A1", &a, &ONE, &LEFT, &actions); // never reached
+  a0.max = 1000000;
 
   init_state(&a, "A", &a0, &a1);
 
