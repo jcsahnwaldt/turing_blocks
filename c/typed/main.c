@@ -10,14 +10,12 @@
 
 // see http://www.logique.jussieu.fr/~michel/ha.html#tm22
 void busy_beaver_2() {
-  value_t ZERO;
+  value_t ZERO, ONE;
   init_value_0(&ZERO);
-  value_t ONE;
   init_value_1(&ONE);
 
-  step_t LEFT;
+  step_t LEFT, RIGHT;
   init_step_left(&LEFT);
-  step_t RIGHT;
   init_step_right(&RIGHT);
 
   // A0  A1  B0  B1
@@ -52,14 +50,12 @@ void busy_beaver_2() {
 
 // http://www.logique.jussieu.fr/~michel/ha.html#tm42
 void busy_beaver_4() {
-  value_t ZERO;
+  value_t ZERO, ONE;
   init_value_0(&ZERO);
-  value_t ONE;
   init_value_1(&ONE);
 
-  step_t LEFT;
+  step_t LEFT, RIGHT;
   init_step_left(&LEFT);
-  step_t RIGHT;
   init_step_right(&RIGHT);
 
   // A0  A1  B0  B1  C0  C1  D0  D1
@@ -99,14 +95,12 @@ void busy_beaver_4() {
 }
 
 void inf() {
-  value_t ZERO;
+  value_t ZERO, ONE;
   init_value_0(&ZERO);
-  value_t ONE;
   init_value_1(&ONE);
 
-  step_t LEFT;
+  step_t LEFT, RIGHT;
   init_step_left(&LEFT);
-  step_t RIGHT;
   init_step_right(&RIGHT);
 
   state_t a;
